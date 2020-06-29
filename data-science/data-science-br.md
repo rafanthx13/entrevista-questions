@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Another page
-description: This is just another page
+title: Data Science PT-BR
+description: Questões de DataScience e Machine Learning
 ---
 
 # Data Science - BR

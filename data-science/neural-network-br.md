@@ -1,4 +1,8 @@
-
+---
+layout: default
+title: Redes Neurais PT-BR
+description: Questões de Redes Neurais (Conceitos básicos)
+---
 
 Step Functions
 + Sigmoid Function

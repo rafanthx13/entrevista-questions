@@ -1,31 +1,15 @@
+<div align="center">
+<h1> Questões de Entrevistas de DataScience </h1>
+<p>
+  <img src="https://img.shields.io/badge/questions-data--science-blue" alt="Questions DataScience">
+</p>
+</div>
 
-<figure>
-    <img src="img/repo-logo.jpg">
-    <figcaption>Photo by <a href="https://pxhere.com/en/photographer/395564">Waseem Farooq</a> from <a href="http://pxhere.com/en/photo/1446003">PxHere</a></figcaption>
-</figure>
+## Links para outras páginas
 
-# Data Science Interviews
++ data-science
+  - [data-science-br](./data-science/data-science-br.html)
+  - [neural-network-br](./data-science/neural-network-br.html)
+  - [python-br](./data-science/python-br.html)
 
-Data science interview questions - with answers
-
-The answers are given by the community
-
-* If you know how to answer a question — please create a PR with the answer
-* If there's already an answer, but you can improve it — please create a PR with improvement suggestion
-* If you see a mistake — please create a PR with a fix
-
-For updates, follow me on Twitter ([@Al_Grigor](https://twitter.com/Al_Grigor)) and on LinkedIn ([agrigorev](https://www.linkedin.com/in/agrigorev))
-
-
-## Questions by category
-
-* Theoretical questions: [theory.md](theory.md) (linear models, trees, neural networks and others)
-* Technical questions: [technical.md](technical.md) (SQL, Python, coding)
-* More to come
-
-## Other useful things
-
-* Awesome data science interview questions and other resources: [awesome.md](awesome.md)
-
-
-This is a joint effort of many people. You can see the list of contributors here: [contributors.md](contributors.md)
+<h2 align="center">Feito por ⚡️<a href="https://rafanthx13.github.io/">Rafael Morais de Assis</a></h2>

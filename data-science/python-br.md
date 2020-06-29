@@ -1,3 +1,9 @@
+---
+layout: default
+title: Python PT-BR
+description: Questões da Linguagem de Programação Python
+---
+
 ##### What is the difference between a tuple and a list in Python?
 “Apart from tuples being immutable there is also a semantic distinction that should guide their usage.” 
 

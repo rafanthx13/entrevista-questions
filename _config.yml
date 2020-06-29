@@ -1,3 +1,4 @@
 theme: jekyll-theme-cayman
-title: Data Science Entervistsa
-description: fsafsafasfaf
+title: Questões de Data Science
+description: Respostas para Questões de DataScience
+# cover_image => pode ser usada no html como `site.cover_image`
