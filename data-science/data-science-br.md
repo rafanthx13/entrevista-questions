@@ -8,6 +8,40 @@ description: Questões de DataScience e Machine Learning
 
 ## Índice
 
+- [Data Science - BR](#data-science---br)
+  * [Índice](#-ndice)
+  * [Links](#links)
+  * [Conceituais](#conceituais)
+        * [O que é DataScience?](#o-que---datascience-)
+        * [O que é Big Data?](#o-que---big-data-)
+        * [Qual é a diferença entre ‘data science’ e ‘big data’?](#qual---a-diferen-a-entre--data-science--e--big-data--)
+        * [Qual é a diferença entre um ‘data scientist’ e um ‘data analyst’?](#qual---a-diferen-a-entre-um--data-scientist--e-um--data-analyst--)
+        * [Quais são os recursos fundamentais que representam big data?](#quais-s-o-os-recursos-fundamentais-que-representam-big-data-)
+        * [What’s the difference between AI and ML?](#what-s-the-difference-between-ai-and-ml-)
+  * [Tecnicas](#tecnicas)
+          + [O que é Overfitting, Underfitting e Generalization?](#o-que---overfitting--underfitting-e-generalization-)
+          + [Quais técnicas utilizadas para tratamento de variáveis categóricas?](#quais-t-cnicas-utilizadas-para-tratamento-de-vari-veis-categ-ricas-)
+          + [O que é ‘validação cruzada’?](#o-que----valida--o-cruzada--)
+          + [Qual é a diferença entre o aprendizado ‘supervisionado’ e ‘não supervisionado’?](#qual---a-diferen-a-entre-o-aprendizado--supervisionado--e--n-o-supervisionado--)
+          + [Differentiate Machine Learning and Deep Learning?](#differentiate-machine-learning-and-deep-learning-)
+          + [What makes Classification different from Regression](#what-makes-classification-different-from-regression)
+          + [Explain what precision and recall are. How do they relate to the ROC curve?](#explain-what-precision-and-recall-are-how-do-they-relate-to-the-roc-curve-)
+          + [What’s regularization?](#what-s-regularization-)
+          + [What steps would you take to evaluate the effectiveness of your ML model?](#what-steps-would-you-take-to-evaluate-the-effectiveness-of-your-ml-model-)
+          + [What would you do if data in a data set were missing or corrupted?](#what-would-you-do-if-data-in-a-data-set-were-missing-or-corrupted-)
+        * [Q18. While working on a data set, how do you select important variables? Explain your methods.](#q18-while-working-on-a-data-set--how-do-you-select-important-variables--explain-your-methods)
+        * [Q19. What is the difference between covariance and correlation?](#q19-what-is-the-difference-between-covariance-and-correlation-)
+        * [Q20. Is it possible capture the correlation between continuous and categorical variable? If yes, how?](#q20-is-it-possible-capture-the-correlation-between-continuous-and-categorical-variable--if-yes--how-)
+  * [Answer: Yes, we can use ANCOVA (analysis of covariance) technique to capture association between continuous and categorical variables.](#answer--yes--we-can-use-ancova--analysis-of-covariance--technique-to-capture-association-between-continuous-and-categorical-variables)
+  * [Questoes cientificas de paper](#questoes-cientificas-de-paper)
+        * [What’s your favorite use case?](#what-s-your-favorite-use-case-)
+        * [What conferences are you hoping to attend this year? Any keynote speeches you’re hoping to catch?](#what-conferences-are-you-hoping-to-attend-this-year--any-keynote-speeches-you-re-hoping-to-catch-)
+        * [Do you have research experience in AI?](#do-you-have-research-experience-in-ai-)
+      - [PERGUNTA MATADORA](#pergunta-matadora)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 ## Links
 + https://br.bitdegree.org/tutoriais/data-science/#Dicas_gerais_e_resumo
 
@@ -17,7 +51,7 @@ description: Questões de DataScience e Machine Learning
 
 Ciência de dados é a atividade de extrair informação a apartir da análise de dados (estruturados (ml) ou não estruturados (dl)).
 
-Usase técnicas da matemática, estatística e computação (algoritmos, ml e dl) para fazer isso.
+Usa-se técnicas da matemática, estatística e computação (algoritmos, ml e dl) para fazer isso.
 
 Data Science NÃO É...
 
