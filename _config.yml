@@ -2,4 +2,3 @@ theme: jekyll-theme-cayman
 title: Questões de Data Science
 description: Respostas para Questões de DataScience
 url: index.html
-# cover_image => pode ser usada no html como `site.cover_image`

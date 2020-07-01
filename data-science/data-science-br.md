@@ -4,128 +4,79 @@ title: Data Science PT-BR
 description: Questões de DataScience e Machine Learning
 ---
 
-# Data Science - BR
-
-## Índice
-
-- [Data Science - BR](#data-science---br)
-  * [Índice](#-ndice)
-  * [Links](#links)
-  * [Conceituais](#conceituais)
-        * [O que é DataScience?](#o-que---datascience-)
-        * [O que é Big Data?](#o-que---big-data-)
-        * [Qual é a diferença entre ‘data science’ e ‘big data’?](#qual---a-diferen-a-entre--data-science--e--big-data--)
-        * [Qual é a diferença entre um ‘data scientist’ e um ‘data analyst’?](#qual---a-diferen-a-entre-um--data-scientist--e-um--data-analyst--)
-        * [Quais são os recursos fundamentais que representam big data?](#quais-s-o-os-recursos-fundamentais-que-representam-big-data-)
-        * [What’s the difference between AI and ML?](#what-s-the-difference-between-ai-and-ml-)
-  * [Tecnicas](#tecnicas)
-          + [O que é Overfitting, Underfitting e Generalization?](#o-que---overfitting--underfitting-e-generalization-)
-          + [Quais técnicas utilizadas para tratamento de variáveis categóricas?](#quais-t-cnicas-utilizadas-para-tratamento-de-vari-veis-categ-ricas-)
-          + [O que é ‘validação cruzada’?](#o-que----valida--o-cruzada--)
-          + [Qual é a diferença entre o aprendizado ‘supervisionado’ e ‘não supervisionado’?](#qual---a-diferen-a-entre-o-aprendizado--supervisionado--e--n-o-supervisionado--)
-          + [Differentiate Machine Learning and Deep Learning?](#differentiate-machine-learning-and-deep-learning-)
-          + [What makes Classification different from Regression](#what-makes-classification-different-from-regression)
-          + [Explain what precision and recall are. How do they relate to the ROC curve?](#explain-what-precision-and-recall-are-how-do-they-relate-to-the-roc-curve-)
-          + [What’s regularization?](#what-s-regularization-)
-          + [What steps would you take to evaluate the effectiveness of your ML model?](#what-steps-would-you-take-to-evaluate-the-effectiveness-of-your-ml-model-)
-          + [What would you do if data in a data set were missing or corrupted?](#what-would-you-do-if-data-in-a-data-set-were-missing-or-corrupted-)
-        * [Q18. While working on a data set, how do you select important variables? Explain your methods.](#q18-while-working-on-a-data-set--how-do-you-select-important-variables--explain-your-methods)
-        * [Q19. What is the difference between covariance and correlation?](#q19-what-is-the-difference-between-covariance-and-correlation-)
-        * [Q20. Is it possible capture the correlation between continuous and categorical variable? If yes, how?](#q20-is-it-possible-capture-the-correlation-between-continuous-and-categorical-variable--if-yes--how-)
-  * [Answer: Yes, we can use ANCOVA (analysis of covariance) technique to capture association between continuous and categorical variables.](#answer--yes--we-can-use-ancova--analysis-of-covariance--technique-to-capture-association-between-continuous-and-categorical-variables)
-  * [Questoes cientificas de paper](#questoes-cientificas-de-paper)
-        * [What’s your favorite use case?](#what-s-your-favorite-use-case-)
-        * [What conferences are you hoping to attend this year? Any keynote speeches you’re hoping to catch?](#what-conferences-are-you-hoping-to-attend-this-year--any-keynote-speeches-you-re-hoping-to-catch-)
-        * [Do you have research experience in AI?](#do-you-have-research-experience-in-ai-)
-      - [PERGUNTA MATADORA](#pergunta-matadora)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
+## Índex
 
 ## Links
-+ https://br.bitdegree.org/tutoriais/data-science/#Dicas_gerais_e_resumo
++ [https://br.bitdegree.org/tutoriais/data-science/#Dicas_gerais_e_resumo](https://br.bitdegree.org/tutoriais/data-science/#Dicas_gerais_e_resumo)
 
 ## Conceituais
 
-##### O que é DataScience?
+### DS-001 - O que é DataScience?
 
 Ciência de dados é a atividade de extrair informação a apartir da análise de dados (estruturados (ml) ou não estruturados (dl)).
 
 Usa-se técnicas da matemática, estatística e computação (algoritmos, ml e dl) para fazer isso.
 
-Data Science NÃO É...
+Data Science NÃO É IA, Estatística, ML (Machine Learning), Big Data, Power BI nem Algoritmos.
 
+### DS-002 - O que é Big Data?
 
+Big data significa ter enorme volume de dados. O termo em si significa isso mas pode engloba toda a parte de arquitetura de uma empresa para suportar ter esse dados (como o Hadoop).
 
-...Inteligência Artificial.
+### DS-003 - Qual é a diferença entre ‘data science’ e ‘big data’?
 
-...Estatística.
+Big Data em si não traz valor algum sem a técnica de Data Science. Então, Big Data é um objeto de análise de Data Science.
 
-...Machine Learning.
+### DS-004 - Qual é a diferença entre um ‘data scientist’ e um ‘data analyst’?
 
-...Big Data.
+A DataScience busca retirar informações apartir de técnicas computacionais: para Classificação, Regressão e etc..
 
-...Power BI.
+Data Analytics resolve problemas de negócios, utilizando mais a estatística para resolver as coisas.
 
-...Algoritmos.
-
-
-Data Science é a habilidade que você tem em extrair conhecimento de informações que podem ser analisadas.
-
-
-##### O que é Big Data?
-
-##### Qual é a diferença entre ‘data science’ e ‘big data’?
-
-Big data significa ter um enorme volume de dados. O termo em sí significa isso mas pode engloba toda a parte de arquiteutra de uma empresa para suportar ter esse dados (como o haddop).
-
-Big Data em si nâo traz valor algum sem a técnica de dataSicnece. ENtâo, Big Data é um objeto de análise para DataSicnec
-
-##### Qual é a diferença entre um ‘data scientist’ e um ‘data analyst’?
-
-A DataScience busca retirar informações aparitr de técnicas computaçiconais: Classificar, regressao e etc..
-
-DataAnalises resolve problemas de negócios, utilizando mais a estatistica para resolver as coisas.
-
-##### Quais são os recursos fundamentais que representam big data?
+### DS-005 - Quais são os recursos fundamentais que representam big data?
 
 Agora que abordamos as definições, podemos passar para as perguntas mais específicas de uma entrevista sobre data science. Tenha em mente, porém, que você será obrigado a responder perguntas relacionadas a data scientist, data analyst e big data. A razão para isso acontecer é porque todas essas subcategorias estão interligadas entre si.
 
 Existem cinco categorias que representam big data e são chamadas de ” 5 Vs “:
 
-Valor;
-Variedade;
-Velocidade;
-Veracidade;
-Volume.
++ Valor;
++ Variedade;
++ Velocidade;
++ Veracidade;
++ Volume.
+
 Todos esses termos correspondem ao Big Data de uma maneira ou de outra.
 
-#####  What’s the difference between AI and ML?
-AI and machine learning
+### DS-006 - Qual a diferença entre IA, ML?
 
-(Source)
+<img src="../img/difference-ia-ds-ml.png" />
 
-AI and ML are closely related, but these terms aren’t interchangeable. ML actually falls under the umbrella of AI. It demands that machines carry out tasks in the same way that humans do.
+## Técnicas 
 
-The current application of ML in AI is based around the idea that we should enable access to data so machines can observe and learn for themselves.
+### DS-007 - O que é Overfitting, Underfitting e Generalization, Bias e Variância?
 
----
----
----
+### DS-008 - Quais técnicas utilizadas para tratamento de variáveis categóricas?
 
-## Tecnicas 
+Label Encoding
++ Usada quando há poucos valores únicos categóricos
++ Mapeia cada valor para um Número
++ Atenção: Use-o para quando o valor categórico poder ser convertido numa representação numérica:
+  - Exemplo: Ruim, Bom, Ótimo [1,2,3]
+  - Pois os valores numéricos terão impacto na aprendizagem, pois vai considerar o valor 1 mais fraco que 3 (no exemplo acima)
 
-###### O que é Overfitting, Underfitting e Generalization?
+One Hot Encoding
++ Usada quando a variável categórica tem diversos valores
++ Para cada valor único, cria-se uma coluna a mais. É colocado 0 ou 1 para o caso de ter aquele atributo.
++ Exemplo Um atributo 'cidade' de um estado
+  - Se existir X cidades, então são criadas mais X features, para cada row do dataSet, somente uma dessa X novas features terá o valor 1, as outras X-1 features terão valor 0.
 
-###### Quais técnicas utilizadas para tratamento de variáveis categóricas?
+### DS-009 - O que é ‘validação cruzada’?
 
-###### O que é ‘validação cruzada’?
-
-cross-validation: É executar um modelo de ml de várias formas diferentes (mudando a ordem de entrada das rows do dataset)
+`cross-validation`: É executar um modelo de ML de várias formas diferentes (mudando a ordem de entrada das rows do dataset)
 
 Ele verifica como determinados resultados de análises estatísticas específicas serão medidos quando colocados em um conjunto independente de dados.
 
-###### Qual é a diferença entre o aprendizado ‘supervisionado’ e ‘não supervisionado’?
+### DS-010 - Qual é a diferença entre o aprendizado ‘supervisionado’ e ‘não supervisionado’?
 
 Embora essa não seja uma das perguntas mais comuns das entrevistas, e, tenha mais a ver com machine learning do que com qualquer outra coisa, ela ainda assim pertence ao data science, portanto vale a pena saber a resposta.
 
@@ -133,22 +84,28 @@ Durante o aprendizado supervisionado, você infere uma função de uma parte rot
 
 Aprendizado não supervisionado refere-se a um método de treinamento de máquina que não usa respostas rotuladas – a máquina aprende por descrições dos dados de entrada.
 
-###### Differentiate Machine Learning and Deep Learning?
+### DS-011 - Diferencie Machine Learning (ML) de Deep Learning (DL)?
 
-ML é uma área de IA que trata de algorimtomos ou técnicas computacionais para máquinas/modelo/algoritmo aprender automaticamnete com os dados.
+ML é uma área de IA que trata de algoritmos ou técnicas computacionais para máquinas/modelo/algoritmo aprender automaticamente com os dados.
 
-DL é um conjunto de ML que trata das redes neurias com várias camadas para fazer a mesma coias (porem mais complexa).
+DL é um conjunto de ML que trata das redes neurais com várias camadas e mais complexas.
 
-###### What makes Classification different from Regression
+### DS-012 - Qual a diferença entre Classificação e Regressão?
 
-Both these concepts are an important aspect of supervised machine learning techniques. With Classification, the output is classified into different categories for making predictions. Whereas Regression models are usually used to find out the relationship between forecasting and variables. A key difference between classification and regression is that in the former the output variable is discrete and it is continuous in the latter.
+Os dois são atividades que podem ser realizadas por modelos de ML para predição.
+
+A principal diferença é no valor de saída
++ Na classificação o valor é discreto (0 ou 1, ou [0,1,2,3..] ...)
++ Na regressão é contínuo (1,88; R$ 6.880,99 ...)
+
+Em classificação, o objetivo é classificar uma row em determinada categoria.
++ Exemplo: Dado uma row com características de uma flor, classificar que tipo de planta é ela (Iris)
+
+Em regressão, o objetivo é obter um valor numérico
++ Exemplo: Dado uma row de características de uma casa, predizer o valor dela  
 
 
-####### How will you deal with missing data in a dataset?
-
-One of the greatest challenges faced by a data scientist pertains to the problem of missing data. You can attribute the missing values in many ways including assigning a unique category, row deletion, substituting with mean/median/mode, employing algorithms that support the support missing values, and forecasting the missing value to name a few.
-
-###### Explain what precision and recall are. How do they relate to the ROC curve?
+### DS-013 - Explain what precision and recall are. How do they relate to the ROC curve?
 
 https://www.kdnuggets.com/2016/02/21-data-science-interview-questions-answers.html/2
 
@@ -158,7 +115,7 @@ The recall is alternatively called a true positive rate. It refers to the number
 
 Precision, which is alternatively called a positive predicted value, is based on prediction. It is a measurement of the number of accurate positives that the model has claimed as compared to the number of positives that the model has actually claimed.
 
-######### What is the difference between type I vs type II error?
+### DS-014 - What is the difference between type I vs type II error?
 
 https://www.datasciencecentral.com/profiles/blogs/understanding-type-i-and-type-ii-errors
 
@@ -180,42 +137,50 @@ Continuing our shepherd and wolf example.  Again, our null hypothesis is that th
 
 A tabular relationship between truthfulness/falseness of the null hypothesis and outcomes of the test can be seen in the table below:
 
+### DS-015 -  O que é Regularização?
 
-###### What’s regularization?
+Técnica para tratar do problema de overfitting (quando o modelo se adapta demais aos dados de treinamento) ou de underfitting (quando não consegue se ajustar aos dados).
 
-When you have underfitting or overfitting issues in a statistical model, you can use the regularization technique to resolve it. Regularization techniques like LASSO help penalize some model parameters if they are likely to lead to overfitting.
+<img src="../img/overffiting-underfiting.png" />
 
-If the interviewer follows up with a question about other methods that can be used to avoid overfitting, you can mention cross-validation techniques such as k-folds cross-validation.
+A regularização coloca mais informação para dar penalidade aos dados que trariam a condição de overfitting/underfitting.
 
-Another approach is to keep the model simple by taking into account fewer variables and parameters. Doing this helps remove some of the noise in the training data.
+Ele ajuda a reduzir a complexidade do modelo e assim fazer melhores previsões.
+
+É aconselhado em que tem: poucas features para um dataSet muito grande ou ao contrário, quando há muitas features para poucos dados.
+
+Ver L1, L2, Lasso, Ridge.
 
 link: http://enhancedatascience.com/2017/07/04/machine-learning-explained-regularization/
 
-###### What steps would you take to evaluate the effectiveness of your ML model?
-You have to first split the data set into training and test sets. You also have the option of using a cross-validation technique to further segment the data set into a composite of training and test sets within the data.
+### DS-001 - Como avaliar modelos de ML?
 
-Then you have to implement a choice selection of the performance metrics like the following:
+Separa os dados em *train* e *test* de forma aleatória. Aplica o modelo na base de treinamento e avalia o seu modelo na base de teste.
 
-Confusion matrix
-Accuracy
-Precision
-Recall or sensitivity
-Specificity
-F1 score
-For the most part, you can use measures such as accuracy, confusion matrix, or F1 score. However, it’ll be critical for you to demonstrate that you understand the nuances of how each model can be measured by choosing the right performance measure to match the problem.
+Pode-se usar a técnica de *cross-validation* para garantir que essa divisão é adequada.
+
+Pode-se avaliar pelos seguintes critérios
++ Matriz de Confusão
++ Curva ROC, CAP e seus respectivos AUC
++ Acurácia, Precisão, Recall, Sensitividade, Especifidade
++ F1 Score
 
 https://medium.com/@MohammedS/performance-metrics-for-classification-problems-in-machine-learning-part-i-b085d432082b
 
-###### What would you do if data in a data set were missing or corrupted?
+### DS-001 - O que fazer com dados corrompidos ou faltantes?
 
-Whenever data is missing or corrupted, you either replace it with another value or drop those rows and columns altogether. In Pandas, both isNull() and dropNA() are handy tools to find missing or corrupted data and drop those values. You can also use the fillna() method to fill the invalid values in a placeholder—for example, “0.”
+Podemos:
++ Retirar as rows (se forem poucas estiverem corrompidas)
++ Retirar as colunas (se muitas rows estiverem corrompidas)
++ Colocar a média ou algum valor que faça sentido.
 
-disecar
-
+Dissecar:
 https://analyticsindiamag.com/5-ways-handle-missing-values-machine-learning-datasets/
 
 
-##### Q18. While working on a data set, how do you select important variables? Explain your methods.
+### DS-001 - Como selecionar as features mais importantes de um DataSet?
+
++ Remove as features que estão correlacionadas
 
 Answer: Following are the methods of variable selection you can use:
 
@@ -227,54 +192,17 @@ Use Lasso Regression
 Measure information gain for the available set of features and select top n features accordingly.
  
 
-##### Q19. What is the difference between covariance and correlation?
+### DS-001 - Q19. What is the difference between covariance and correlation?
 
-Answer: Correlation is the standardized form of covariance.
+> Answer: Correlation is the standardized form of covariance.
 
-Covariances are difficult to compare. For example: if we calculate the covariances of salary ($) and age (years), we’ll get different covariances which can’t be compared because of having unequal scales. To combat such situation, we calculate correlation to get a value between -1 and 1, irrespective of their respective scale.
+>Covariances are difficult to compare. For example: if we calculate the covariances of salary ($) and age (years), we’ll get different 
+>covariances which can’t be compared because of having unequal scales. To combat such situation, we calculate correlation to get a value 
+>between -1 and 1, irrespective of their respective scale.
 
  
 
-##### Q20. Is it possible capture the correlation between continuous and categorical variable? If yes, how?
+### DS-001 - Q20. Is it possible capture the correlation between continuous and categorical variable? If yes, how?
 
 Answer: Yes, we can use ANCOVA (analysis of covariance) technique to capture association between continuous and categorical variables.
-------
-------
--------
-------
-
-## Questoes cientificas de paper
-
-https://www.springboard.com/blog/artificial-intelligence-questions/ 
-aparitr de 38
-
-##### What’s your favorite use case?
-
-Just like research, you should be up to date on what’s going on in the industry. As such, if you’re asked about use cases, make sure that you have a few examples in mind that you can share. Whenever possible, bring up your personal experiences.
-
-You can also share what’s happening in the industry. For example, if you’re interested in the use of AI in medical images, Health IT Analytics has some interesting use cases:
-
-Detecting Fractures And Other Musculoskeletal Injuries
-Aiding In The Diagnosis Neurological Diseases
-Flagging Thoracic Complications And Conditions
-
-##### What conferences are you hoping to attend this year? Any keynote speeches you’re hoping to catch?
-
-Conferences are great places to network, attend workshops, learn, and grow. So if you’re planning to stick to a career in artificial intelligence, you should be going to some of these. For example, Deep Learning World has a great one every summer.
-
-This year’s event in Las Vegas will feature keynote speakers like Dr. Dyann Daley (founder and CEO of Predict Align Prevent), Siddha Ganju (solutions architect at Nvidia), and Dr. Alex Glushkovsky (principal data scientist at BMO Financial Group, and others).
-
-##### Do you have research experience in AI?
-
-At present, a lot of work within the AI space is research-based. As a result, many organizations will be digging into your background to ascertain what kind of experience you have in this area. If you authored or co-authored research papers or have been supervised by industry leaders, make sure to share that information.
-
-In fact, take it a step further and have a summary of your research experience along with your research papers ready to share with the interviewing panel.
-
-However, if you don’t have any formal research experience, have an explanation ready. For example, you can talk about how your AI journey started as a weekend hobby and grew into so much more within a space of two or three years.
-
-
-#### PERGUNTA MATADORA
-!!!!!!!!!!!!!!!!!
-**Repsonda todas essa pergunta sde forma mais curta para uma criança**
-!!!!!!!!!!!!!!!!!
 

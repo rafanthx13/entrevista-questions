@@ -52,31 +52,3 @@ The SciPy package contains powerful tools that help solve tasks related to integ
 
 Recently, this Python library went through some major build improvements in the form of continuous integration into multiple operating systems, methods, and new functions. Optimizers were also updated, and several new BLAS and LAPACK functions were wrapped.
 
-
-
-##### 
-
-
-
-##### 
-
-
-##### 
-
-
-##### 
-
-
-
-##### 
-
-
-
-##### 
-
-
-##### 
-
-
-
-##### 
