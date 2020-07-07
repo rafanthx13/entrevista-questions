@@ -4,28 +4,6 @@ title: Data Science PT-BR
 description: Questões de DataScience e Machine Learning
 ---
 
-<!--
-Conceitos
-Supervisioned Learning
-Avaliaçâo de ML
-Classificaçâo 
-REgressão
-Sleçâo de Features
-Árvore de Decisão
-Gradient Boosting
-Parameter tunings
-Redução de dimensionalidade
-
-O índex deve ser bem elaborado, deixando cada coisa junta:
-usar h3 e h4, mas nao h5 pois é pequeno demais
-
-O que está separado aqui
-+ Conceituais e Teóricas
-+ Técnicas
-+ Avaliar Modelos
-+Engenhraia de Features
--->
-
 ## Índex
 
 ## Links
@@ -106,7 +84,6 @@ won’t vary much.
 High Variance: when you run your model several times, the different predictions of your observation points
 will vary a lot.
 
-
 ### DS-010 - Qual é a diferença entre o aprendizado ‘supervisionado’ e ‘não supervisionado’?
 
 Embora essa não seja uma das perguntas mais comuns das entrevistas, e, tenha mais a ver com machine learning do que com qualquer outra coisa, ela ainda assim pertence ao data science, portanto vale a pena saber a resposta.
@@ -179,23 +156,79 @@ Exemplos
 
 **Mean Squared Error(MSE) | Erro quadrático médio (EQM)**
 + Média da Somatória da diferença entre valor esperado (y) e valor previsto (ŷ) elevado ao quadrado
-
++ O MSE eleva o quadrado por duas razões:
+  1. Erro acima do valor real ou abaixo vão ficar positivos (pois eleva ao quadrado.
+  2. Os módulos dos erros maiores vão gerar maior penalidade, assim tende a ser mais impactado por outliers.
++ Tanto MSE quanto RMSE são muito impactados pela presença de outliers no Y. 
+  - Então, se com essa métrica parecer ruim, observe se há ou não outliers pois eles podem está atrapalhando a sua métrica
 **Root Mean Squared Error(RMSE) | Raiz do Erro Quadrático Médio (REQM**
-+ Raiz da MSE
++ Raiz da MSE, dessa forma volta a dimensão anterior dos erros antes de serem elevados ao quadrado
+
+
+**(R)MSLE - (Root) Mean Squared Logarithmic Error - Raiz Quadrada do Erro Médio Logarítmico Quadrado**
++ É o MSE mas aplicando um Log
++ Ele acaba sendo uma aproximação do MSE para um **Erro percentual**
++ Matematicamente ele é mais fácil de minimizar
++ O MSE se importa com a diferença "absoluta", enquanto que o MSLE se importa com a diferença "relativa" por calcular o erro como uma *diferença percentual* entre o valor real (y) e o previsto (ŷ)
++ [link +msle](https://peltarion.com/knowledge-center/documentation/modeling-view/build-an-ai-model/loss-functions/mean-squared-logarithmic-error-(msle))
++ Costuma ser usado em vendas, exemplo: se eseprar vender 1000 e vende 1001 o impcato é menor pois só o fato de conseguir prever 1000 já é um grande ganho. Se usa-semos MSE o impcato entre y = 2 ŷ = 3 e seria o mesmo que y = 1000 e ŷ = 10001, que para uma venda, nâo é impcatante assim.
++ **Comparando a questão de OutLiers entre MSE e MSLE**
+  - O MSLE é sensível a outliers, bem menos que MSE porque há diferença que ele faz é relativa
+
+<img src="../img/msle-01.png" />
 
 **Mean Absolute Error(MAE) | Erro Absoluto Médio (EAM)**
 + Somatório da diferença entre o valor esperado (y) e o valor previsto (ŷ) dividido pela quantidade de previsões
++ Não é sensitivo a outilers, por isso, é usada para quando não se quer que os outilers tenham impacato na avaliação
++ Por isso você usa quando não tem outilers em geral, quando sâo extremamente raros
+**Observação: MAE e MSE**
++ MSE e RMSE penalizam outliers e o MAE não
++ Então, se ao analisar seus dataset, os outliers existirem mas forem realmente parte dos seus dados, então, é recomendável usar MSE. 
++ Agora, se puder retirar os outliers, então é melhor o MAE
+
+
+**MedAE - Median Absolute Error - Erro Mediano Absoluto**
++ As vezes também chamado de MAD
++ Fórmula: É a mediana da Serie dos módulos dos erros abolutos para cada predição
+  - 1. Forma uma lista dos erros absolutos; 2. Aplica módulo (todos ficam positivos); 3. busca a mediana
++ Quanto menor, melhor
+- Esse erro é raro de ver sendo usado, mas o foi no site de preço de casas na [Zillow](https://www.zillow.com/research/putting-accuracy-in-context-3255/)
++ MedAE é uma medida robusta , similar ao MAE por ignorar muito outilers, pois, se o erro nos outilers forem muito grandes, eles vão para a cabeça(head) ou calda (tails) da lista e assim só vai mover o index da median uma casa pra frente/trás da listagem de erros absolutos.
+
+Lembrando: Mediana é o valor que fica no meio caso você ordenar tudo em forma ascendente um conjunto de dados.
+
+Exemplo de como funciona
+````python
+import numpy as np
+from sklearn.metrics import median_absolute_error
+
+y_true = np.asarray([3, -0.5, 2, 7, 6])
+y_pred = np.asarray([2.5, 0.0, 2, 8, 9])
+
+print(np.sort(np.absolute(y_true - y_pred)))
+# [0.  0.5 0.5 1.  3. ] Ordenando os erros em valores absolutos, o valor do meio é a MedAE: 0.5
+
+median_error_manual = np.median(np.absolute(y_true - y_pred)) # calculo manual
+print("manual", median_error_manual, "| sklearn", median_absolute_error(y_true, y_pred))
+# manual 0.5 | sklearn 0.5
+````
+
+<img src="../img/maed.png" />
+
+**MAPE - Mean Absolute Percentage Error - Erro Médio Percentual Absoluto**
++ Erro mais fácil de ser explicado, fica entre [0,1], quanto menor, melhor
++ É a média das porcentagens de erro
++ No exemplo abaixo temos se o  de MAPE é 0.42, quer dizer que: **O modelo erra 42% em média** em mas nâo se sabe se é acima do valor ou abaixo do valor real.
+
 
 **R² or Coefficient of Determination | **Coeficiente de Determinação** $ R^2 $. **
++ [Porque o R2 é inútil](https://data.library.virginia.edu/is-r-squared-useless/)
 + Basicamente, este coeficiente R² indica quanto o modelo foi capaz de explicar os dados coletados. O R² varia entre 0 e 1, indicando, em percentagem, o quanto o modelo consegue explicar os valores observados. Quanto maior o R², mais explicativo é o modelo, melhor ele se ajusta à amostra.
 + Por exemplo, se o R² de um modelo é 0,8234, isto significa que 82,34% da variável dependente consegue ser explicada pelos regressores presentes no modelo.
 + O R² deve ser usado com precaução, pois é sempre possível torná-lo maior pela adição de um número suficiente de termos ao modelo. Assim, se, por exemplo, não há dados repetidos (mais do que um valor `y` para um mesmo `x` ) um polinômio de grau `n - 1` dará um ajuste perfeito R² = 1 para n  dados. Quando há valores repetidos, o R² não será nunca igual a 1, pois o modelo não poderá explicar a variabilidade devido ao erro puro.
 r. 
 
-**Observação: MAE e MSE**
-+ MSE e RMSE penalizam outliers e o MAE não
-+ Então, se ao analisar seus dataset, os outliers existirem mas forem realmente parte dos seus dados, então, é recomendável usar MSE. 
-+ Agora, se puder retirar os outliers, então é melhor o MAE
+
 
 ### O que é Regularização?
 
@@ -245,11 +278,66 @@ Na presença de muitas variáveis com efeito de tamanho pequeno / médio, use re
 
 Conceitualmente, podemos dizer que a regressão de laço (L1) faz seleção de variáveis e encolhimento de parâmetros, enquanto a regressão de Ridge apenas encolhe e acaba incluindo todos os coeficientes do modelo. Na presença de variáveis correlacionadas, a regressão de Ridge pode ser a escolha preferida. Além disso, a regressão de Ridge funciona melhor em situações em que as estimativas menos quadradas têm maior variação. Portanto, depende do objetivo do nosso modelo.
 
+### Quando a regularização se torna necessária no Machine Learning?
+
+https://www.analyticsvidhya.com/blog/2016/09/40-interview-questions-asked-at-startups-in-machine-learning-data-science/
+
+A regularização torna-se necessária quando o modelo começa a adequar demais (overfitting) ou não se adequar (underfitting). Essa técnica introduz um termo de custo para trazer mais recursos com a função objetivo. Portanto, ele tenta empurrar os coeficientes de muitas variáveis para zero e, portanto, reduzir o custo. Isso ajuda a reduzir a complexidade do modelo para que o modelo possa se tornar melhor na previsão (generalização).
+
 ---
 ---
 ---
 
 ## Avaliar Modelos
+
+### Cross-Validattion
+
+#### train_test_split ou holdout strategy
+
+[sklearn - cross validation](https://scikit-learn.org/stable/modules/cross_validation.html)
+
+<div style="text-align: center;">
+	<img src="../img/holdout-strategy.jpg" />	
+</div>
+
+Pros of the hold-out strategy: Fully independent data; only needs to be run once so has lower computational costs.
+
+Cons of the hold-out strategy: Performance evaluation is subject to higher variance given the smaller size of the data.
+
+**Problema doldout**
+
+AO dividir em train/test, podemos cair no seguinte erro. Tunar os parâmetros para que obtenham o menor erro na base de teste. Perceba que a tunagem está diretamente ligada a essa base de test criando assim um overfiting (nâo consegue generalizar os dados).
+
+Uma forma de evitar isso é fazer mais uma divisão da base, em uma de validaçâo (`validation`).
+
+Essa é testada somente no final. Todo o ajuste de erro é feito olhando para a de test e não apra essa nova.
+
+
+---
+
+Prém vai acontecer o seguinte problea: dividir em 3 a base vai ter poucos dados para fazer o train/test/validate. 
+
+Entâo, utilizamos cross-validation (apelido : CV) para fazer um treinamento otimizado com essa base menor, além de resolver outro problemas.
+
+CV é uma técnica: em ter esse 3 datasets: train/test/final_validation e pode ser feito de várias formas
+
+#### K-Fold CV
+
+[link kdnuggets](https://www.kdnuggets.com/2017/08/dataiku-predictive-model-holdout-cross-validation.html)
+
+K-fold validation evaluates the data across the entire training set, but it does so by dividing the training set into K folds – or subsections – (where K is a positive integer) and then training the model K times, each time leaving a different fold out of the training data and using it instead as a validation set. At the end, the performance metric (e.g. accuracy, ROC, etc. — choose the best one for your needs) is averaged across all K tests. Lastly, as before, once the best parameter combination has been found, the model is retrained on the full data.
+
+Pros of the K-fold strategy: Prone to less variation because it uses the entire training set.
+
+Cons of the K-fold strategy: Higher computational costs; the model needs to be trained K times at the validation step (plus one more at the test step).
+
+<div style="text-align: center;">
+	<img src="../img/validation-04.png" />	
+</div>
+
+<div style="text-align: center;">
+	<img src="../img/kfold-strategy.jpg" />	
+</div>
 
 ### Como avaliar modelos de ML, para classificação e regressão?
 
@@ -278,14 +366,6 @@ O conjunto de treinamento é usado para ajustar o modelo, ou seja, para treinar 
 O conjunto de validação é então usado para fornecer uma avaliação imparcial de um modelo enquanto o ajuste dos hiper parâmetros é feito. Isso melhora a generalização do modelo. 
 
 Finalmente, um conjunto de dados de teste que o modelo nunca “viu” antes deve ser usado para a avaliação final do modelo. Isso permite uma avaliação imparcial do modelo. A avaliação nunca deve ser realizada com os mesmos dados usados para o treinamento. Caso contrário, o desempenho do modelo não seria representativo.
-
-
-
-### How do we choose K in K-fold cross-validation? What’s your favorite K? 👶
-
-There are two things to consider while deciding K: t
-+ he number of models we get and the size of validation set. We do not want the number of models to be too less, like 2 or 3. At least 4 models give a less biased decision on the metrics. On the other hand, we would want the dataset to be at least 20-25% of the entire data. So that at least a ratio of 3:1 between training and validation set is maintained.
-I tend to use 4 for small datasets and 5 for large ones as K.
 
 ## O que é a Matriz de confusão e tudo o que ele engloba?
 
@@ -337,10 +417,14 @@ Porém, em um dataset desbalanceado ela não será uma métrica tão boa.
 
 A Acurrácia não é uma boa métrica  quando há o dataSet está desbalanceado na quantidade de registros por classe. Por exemplo, na classificação binária com 95% da classe A e 5% da classe B, a precisão da previsão pode ser de 95%. Em datasets desbalanceados, precisamos escolher Precisão, Recall ou F1 Score, dependendo do problema que estamos tentando resolver.
 
+- Definiçâo de Acurácia: **Porcentagme de acerto do modelo**
+- não use "oficialmente" (como métrica final a apresentar), apenas "preguiçosamente", há coisas muito melhores
+- inadequada para dados desequilibrados, pode te enganar
+- Exemplo: Imagine que você vai fazer um detector de spam. Na sua caixa de email hoje, cerca de 98% dos seus emails nâo são span. Por causa disso, se você simplismente atribuir todos os emails como não-spam, você consegue uma acurácia monstruosa de 98% sem ser capaz de detectar um único spam. Isso acaontece porque a qtd de spam é extremamente baixa em realaçâo a qtd de não-spam, ou seja, seu dataset está desbalanceado.
 
 <img src="../img/metricas-erros-04.png" />
 
-#### **Precisão, Precision**
+#### Precisão, Precision
 
 É a taxa da quantidade de itens positivos que foram devidamente classificados como positivos, ou seja, a taxa de acerto para classificar os itens de uma classe.
 
@@ -348,6 +432,10 @@ Precisão = TP / (TP + FP)
 <div style="text-align: center;">
 <img src="../img/metricas-erros-06.png" />
 </div>
+
+- Definição de Precisão: **Dos casos que eu previ como positivos (para uma classe) quantos realmente são?**
+- Envio de cupons de desconto, custos diferentes para cada erro.
+- Ex: se custa caro mandar a promoção, das pessoas que eu previ que iam comprar, quantas compraram?
 
 #### Sensitividade, Recall, hit rate TPR (True Positive Rate)
 
@@ -362,6 +450,9 @@ The recall is alternatively called a true positive rate. It refers to the number
 <div style="text-align: center;">
 	<img src="../img/metricas-erros-05.png" />
 </div>
+
+- Definição de Recall: dos que eram realmente positivos (para uma classe) quantos eu detectei?
+- Chamado de taxa de detecção
 
 #### Especificidade, Seletividade Specifity, TNR (True Negative Rate)
 
@@ -399,7 +490,6 @@ print("Matrix de Confusao\n",matriz, "\n")
 print("Matrix de Confusao Porcentagem\n",matriz/matriz.sum(), "\n")
 print(classification_report(y_test,y_pred, target_names=['Not Purchased', 'Purchased']))
 ````
-
 Gerando
 
 ````python
@@ -431,11 +521,73 @@ Avaliacao geral
 + Acurracia
 ````
 
+### Kappa
++ Mede a concordância entre seu modelo e um modelo aleartório
++ Uma boa métrica que pouca gente conhece.
++ Costuma-se usar ele em multi-classes
++ Considera-se geralmente uma medida mais robusta do que o simples cálculo percentual de concordância, pois κ leva em consideração a possibilidade da ocorrência de um acaso
+- [https://en.wikipedia.org/wiki/Cohen%27s_kappa](https://en.wikipedia.org/wiki/Cohen%27s_kappa)
++ Interpretando
+  - Quanto maior o valor kappa, melhor
+  - Ele pode ser negativo
+
+````python
+ from sklearn.metrics import cohen_kappa_score
+
+print("P = {}\nY = {}".format(p_multi_argmax, y_multi))
+# P = [2 1 0 1 2 1 2 0 0 1]
+# Y = [1 1 1 1 2 2 0 0 1 0]
+cohen_kappa_score(y_multi, p_multi_argmax)
+# 0.07692307692307687
+````
+
+### Log Loss or cross-entropy loss
++ **INDEPENDE DO Threshdold/pnto de corte**
+- calculada para a probabilidade empírica do evento. Proporção que o evento ocorre na vida real
+- Se o time A jogar contra o time B e tiver 40% de chances de ganhar, se jogarem 10 vezes, 4 vezes o time A vai ganhar.
+- Se tivermos um modelo para prever isso, entâão, A log loss estará na mínima quando o modelo prever 0.4
+- Ou seja, nosso modleo atingir 0.4 significa que está ótimo
+
+**Se um evento no mundo real tem uma probabilidade limitada de acontecer, então nosso modelo também deverá ter essa mesma probabilidade na log loss se for perfeito**
+
+Em um evento onde já se sabe a probaiblidade, já sabemos o limite que uma log loss pode ter, então, quão mais próximo dessa porcentagem melhor o nosos modelo.
+
+A log loss estará minimizada (loss é o erro, erro mínimo == melhor modelo) quando o modelo prever exatamente  a prob de como o evento ocorre na vida real.
+
+**É A MESMA COISA QUE BINARYCROSS ENTROPY = TEORIA DA INFORMAÇÃO**
+
+**EM suma: A log loss é minimizada (modelo perfeito) quando a prob prevista é igual a probabildiade real**
+
+---
+
+Quando usar: A log loss é imporante quando a probabilidade para classificar algo tem que ser bem calibrada.
+
+quanto menor a log losss, melhor
+
+````python
+from sklearn.metrics import log_loss
+
+print("P = {}\nY = {}".format(p_binary, y_binary))
+
+log_loss(y_binary, p_binary)
+# P = [0.49460165 0.2280831  0.25547392 0.39632991 0.3773151  0.99657423
+#  0.4081972  0.77189399 0.76053669 0.31000935]
+# Y = [0 0 0 1 1 1 0 1 1 0]
+# 0.456820673923256
+
+# Previsâo aleartória
+p_random = np.ones(10) * 0.5
+log_loss(y_binary, p_random)
+# 0.6931471805599453
+
+# Para uma previsâo binária, seu modelo deve estár abaixo de 0.69
+````
+
 ### Curva ROC e AUC ROC
 
 A curva ROC representa uma relação entre sensibilidade (RECALL - ) e especificidade (NÃO PRECISÃO) e é comumente usada para medir o desempenho de classificadores binários.
 
-**Interpretção**
+**Interpretação**
 + E quando mais curvado e distante da diagonal , melhor é o desempenho do seu modelo.
 + Quanto mais próximo a curva do seu modelo da diagonal pior será o desempenho do modelo.
 **Parâmetros**
@@ -453,17 +605,11 @@ AUC (área debaixo da curva) ou AUC-ROC (Area Under the Receiver Operating Chara
 
 O interessante do AUC é que a métrica é invariante em escala, uma vez que trabalha com precisão das classificações ao invés de seus valores absolutos. Além disso, também mede a qualidade das previsões do modelo, independentemente do limiar de classificação.
 
-
-
-
-
 AUC é o valor da integral da curva ROC. É um valor numérico entre \[0,1\].
 
 É feito apartir do e TPR e FPR
 
 Quanto maior o valor do AUC melhor será o modelo.
-
-
 
 A seguir á alguns exemplos de gráficos ROC e valores AUC para entender a correlação entre eles
 
@@ -476,35 +622,70 @@ Exemplo de várias ROC
 <img src="../img/img-roc-auc-cap-07.png"  />
 </div>
 
+**outra interpretação**
+
+- Interpretar ROC-AUC: **Qual é a chance de um exemplo positivo ter um score (previsão) maior do que um negativo?**
+- bom quando garantir que positivos sejam rankeados acima dos negativos é mais importante do que prever a probabilidade real do evento
+  + Exemplo do Spam: Diferente da log loss,eu não me importa com a probabildiade (a certesa do modelo) em classificar se é span ou não (pois isso depende também no threshold). **Eu quero que o email que tenha mais cara de spam  mesmo seja devidamente classificado como span**
+
++ qual é a chance de um exemplo positivo ter um score (previsão) maior do que um negativo?
++ bom quando garantir que positivos sejam rankeados acima dos negativos é mais importante do que prever a probabilidade real do evento
+
+Experimento
+
++ Suponha que tenha duas caixas, uma com só exemplos positivos e outra com apenas exemplo negativas.
++ Eu quero saber: vou tirar dessas caixas um exemplo positivo e um exemplo de negativo ver a probabildiades do meu modelo e devolver pra caixa (é uma coisa de probabilidade sem reposiçâo, possa pegar o mesmo mais de uma vez)
+ - Olho a prob que meu modelo deu para esse exmeplo positivo
+ - Olho a prob que meu modelo deu para o exemplo negativo
+
+Se a prob do positivo é maior que negativo, entaô, conto +1.
+
+A porcentagem de veze que o positov > negativo = AUC Score
+
+AUC SCORE = **qual é a chance de um exemplo positivo ter uma prob maior que o do negativo**
+
+É mais interressante quando eu quero saber que os positivos sejam mais identificáveis com certeza que os negativo (de certa forma um pouco relacionado com a Precision para os positivos).
+
+````python
+sum_over = 0
+total = 100000
+
+for i in range(total):
+
+  caixa_de_positivos = p_binary[y_binary == 1] # caixa com só positivo
+  caixa_de_negativos = p_binary[y_binary == 0] # caixa com só negativo
+
+  positivo = np.random.choice(caixa_de_positivos, size=1, replace=False)
+  negativo = np.random.choice(caixa_de_negativos, size=1, replace=False)
+
+  if positivo > negativo:
+    sum_over += 1
+
+sum_over / total # AUC-ROC
+````
+
+### AUC da PRC - Area Under the Precision-Recall Curve
+- É AVALIAR O ODELO INDEPNDENTE DO THRESHOLD
+- acho mais estável e mais fácil de interpretar
+- É uma média ponderada da curva de precision/recall
+- **VOCÊ CONSEGUE AVALIAR INDEPENDENTE DO PONTO DE CORTE E ALÉM DISSO, VER O DESEMPENHO PARA VÁRIOS PONTOS DE CORTES DIFERENTES**
+  + Assim, depois de usála, podemos escolher um ponto de corte bom
+
+````python
+from sklearn.metrics import average_precision_score
+print("P = {}\nY = {}".format(p_binary, y_binary))
+
+average_precision_score(y_binary, p_binary)
+# P = [0.49460165 0.2280831  0.25547392 0.39632991 0.3773151  0.99657423
+#  0.4081972  0.77189399 0.76053669 0.31000935]
+# Y = [0 0 0 1 1 1 0 1 1 0]
+# 0.8761904761904762
+````
 
 
+[tabela](https://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html#sphx-glr-auto-examples-model-selection-plot-precision-recall-py)
 
-### Você pode explicar como a validação cruzada (`cross-validation`) funciona?
-
-`cross-validation`: É executar um modelo de ML de várias formas diferentes (mudando a ordem de entrada das rows do dataset)
-
-Ele verifica como determinados resultados de análises estatísticas específicas serão medidos quando colocados em um conjunto independente de dados.
-
-A validação cruzada é o processo para separar seu dataset em dois subconjuntos: conjunto de treinamento e validação e avalia seu modelo para escolher os hiper parâmetros.
-
-Esse dois subconjuntos são escolhidos aleartóriamente. Esse processo iterativamente, selecionando diferentes conjuntos de treinamento e validação, a fim de reduzir o viés que você teria selecionando apenas um conjunto específico para treinamento/validação.
-
-Assim, para um mesmo modelo sai diversos modelos com hiper parâmetros diferentes, tendo assim scores diferentes.
-
-A avaliação final do modelo é feita a apartir da média dos scores desse modelo.
-
-### O que é K-fold cross-validation? 👶
-
-A validação cruzada K-fold é um método de validação cruzada em que selecionamos um hiper parâmetro k. O conjunto de dados agora está dividido em k partes. Agora, tomamos a 1ª parte como conjunto de validação e o k-1 restante como conjunto de treinamento. Em seguida, tomamos a 2ª parte como conjunto de validação e as partes k-1 restantes como conjunto de treinamento. Assim, cada parte é usada como conjunto de validação uma vez e as partes restantes do k-1 são reunidas e usadas como conjunto de treinamento. Não deve ser usado em dados de séries temporais.
-
-Mesmo que se divida a base em treino e teste para cada K. 
-
-**QUAL A GARANTIA DE QUE CADA K TENHA A MESMA QUANTIDADE DE REGISTROS PARA CADA CLASSE**
-
-**Exemplo infeliz:** Imagina que você divida a base em 50% para uma classificação binária. Se a os 50% que você pegar para treinamento só tiver 1 classe, então, ele não vai treinar corretamente para avaliar a outra classe.
-
-Então, temos que garantir que no treinamento haja a mesma proporção de amostrar por classe
-
+[average_precision_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)
 
 ---
 ---
@@ -512,7 +693,7 @@ Então, temos que garantir que no treinamento haja a mesma proporção de amostr
 
 ## Engenharia de Features
 
-### DS-008 - Quais técnicas utilizadas para tratamento de variáveis categóricas?
+### Quais técnicas utilizadas para tratamento de variáveis categóricas?
 
 Label Encoding
 + Usada quando há poucos valores únicos categóricos
@@ -527,40 +708,71 @@ One Hot Encoding
 + Exemplo Um atributo 'cidade' de um estado
   - Se existir X cidades, então são criadas mais X features, para cada row do dataSet, somente uma dessa X novas features terá o valor 1, as outras X-1 features terão valor 0.
 
-### Why do we need one-hot encoding? ‍⭐️
+### Por que usar one-hot-encoding ? ‍
 
-If we simply encode categorical variables with a Label encoder, they become ordinal which can lead to undesirable consequences. In this case, linear models will treat category with id 4 as twice better than a category with id 2. One-hot encoding allows us to represent a categorical variable in a numerical vector space which ensures that vectors of each category have equal distances between each other. This approach is not suited for all situations, because by using it with categorical variables of high cardinality (e.g. customer id) we will encounter problems that come into play because of the curse of dimensionality.
+Se simplesmente codificamos variáveis categóricas com Label-Encoding, elas se tornam ordinais, o que pode levar a consequências indesejáveis. Nesse caso, os modelos lineares tratam uma feature com o valor 4 como duas vezes melhor do que uma feature de valor 2. A codificação one-hot-encoding permite representar uma variável categórica em um espaço vetorial numérico, o que garante que os vetores de cada categoria tenham distâncias iguais entre si. 
+
+A abordagem de one-hot-encoding não é adequada para todas as situações, porque, usando-a com variáveis categóricas de alta cardinalidade (por exemplo, identificação do cliente), encontraremos problemas por aumentar demais a dimensionalidade.
 
 ### DS-001 - Como selecionar as features mais importantes de um DataSet?
 
-+ Remove as features que estão correlacionadas
+Remove as features que estão correlacionadas (pois mostram uma mesma tendência)
 
-Answer: Following are the methods of variable selection you can use:
+É possível fazer isso com:
++ Forward Selection, Backward Selection, Stepwise Selection
++ Random Forest, Xgboost 
++ Lasso Regressão
 
-Remove the correlated variables prior to selecting important variables
-Use linear regression and select variables based on p values
-Use Forward Selection, Backward Selection, Stepwise Selection
-Use Random Forest, Xgboost and plot variable importance chart
-Use Lasso Regression
-Measure information gain for the available set of features and select top n features accordingly.
-
-### Q38. When does regularization becomes necessary in Machine Learning?
-
-https://www.analyticsvidhya.com/blog/2016/09/40-interview-questions-asked-at-startups-in-machine-learning-data-science/
-
-Answer: Regularization becomes necessary when the model begins to ovefit / underfit. This technique introduces a cost term for bringing in more features with the objective function. Hence, it tries to push the coefficients for many variables to zero and hence reduce cost term. This helps to reduce model complexity so that the model can become better at predicting (generalizing).
+Avalia as variáveis e selecione as melhores delas.
 
 
+### O que fazer com dados corrompidos ou faltantes?
 
-### DS-001 - O que fazer com dados corrompidos ou faltantes?
-
-Podemos:
-+ Retirar as rows (se forem poucas estiverem corrompidas)
-+ Retirar as colunas (se muitas rows estiverem corrompidas)
-+ Colocar a média ou algum valor que faça sentido.
-
-Dissecar:
 https://analyticsindiamag.com/5-ways-handle-missing-values-machine-learning-datasets/
+
++ 1. Deletar as rows (se forem poucas estiverem corrompidas)
+  - Prós:
+    * A remoção completa dos dados com valores ausentes resulta em um modelo robusto e altamente preciso
+    * A exclusão de uma linha ou coluna específica sem informações específicas é melhor, pois ela não tem um grande preso para predição
+  - Contras:
+    * Perda de informações e dados
+    * Funciona mal se a porcentagem de valores ausentes for alta (digamos 30%), em comparação com o conjunto de dados inteiro
+
++ 2. Para variáveis numéricas substituir por média / mediana / moda
+  - Prós:
+    * Essa é uma abordagem melhor quando o tamanho dos dados é pequeno
+    * Pode impedir a perda de dados, o que resulta na remoção de linhas e colunas
+  - Contras:
+    * Imputar as aproximações dos dados, variância e bias (o que é ruim)
+    * Funciona mal em comparação com outro método de múltiplas imputações
+
++ 3. Atribuir a uma variável categórica valores exclusivos
+  - Usar qualquer outro valor ou usar probabilidade para atribuir a cada valor único categórico, uma probabilidade e colocar nas rows
+  - Prós:
+    * Menos possibilidades com uma categoria extra, resultando em baixa variação após uma codificação quente - uma vez que é categórica
+    * Nega a perda de dados adicionando uma categoria única
+  - Contras:
+    * Adiciona menos variação
+    * Adiciona outro recurso ao modelo durante a codificação, o que pode resultar em baixo desempenho
+
++ 4. Prever valores faltantes
+  - Pode-se usar regressão linear para predizer uma variável faltantes usando as outras que não tem valores faltantes
+  - MELHORAR....
+  - Prós:
+    * Imputar a variável ausente é uma melhoria, desde que o viés da mesma seja menor que o viés da variável omitida
+    * Gera estimativas imparciais dos parâmetros do modelo
+  - Contras:
+    * O viés também surge quando um conjunto de condicionamentos incompleto é usado para uma variável categórica
+    * Considerado apenas como um *proxy* para os valores verdadeiros
+
++ 5. Usando algoritmos que suportam valores faltantes
+  - Exemplo: KNN, Decision Tree e Random Forest
+  - Prós:
+    * Não requer a criação de um modelo preditivo para cada atributo com dados ausentes no conjunto de dados
+    * A correlação dos dados é negligenciada
+  - Contras:
+    * É um processo muito demorado e pode ser crítico na mineração de dados onde grandes bancos de dados estão sendo extraídos
+    * A escolha das funções de distância pode ser Euclidiana, Manhattan etc., o que não gera um resultado robusto
 
 ---
 ---
@@ -568,52 +780,194 @@ https://analyticsindiamag.com/5-ways-handle-missing-values-machine-learning-data
 
 ## Gradient boosting
 
-### What is gradient boosting trees? ‍⭐️
+### Como random forest é diferente de Gradient Boosting Machine (GBM)?
 
-Gradient boosting is a machine learning technique for regression and classification problems, which produces a prediction model in the form of an ensemble of weak prediction models, typically decision trees.
+[https://www.analyticsvidhya.com/blog/2016/09/40-interview-questions-asked-at-startups-in-machine-learning-data-science/](https://www.analyticsvidhya.com/blog/2016/09/40-interview-questions-asked-at-startups-in-machine-learning-data-science/)
 
+[https://www.analyticsvidhya.com/blog/2020/02/4-boosting-algorithms-machine-learning/](https://www.analyticsvidhya.com/blog/2020/02/4-boosting-algorithms-machine-learning/)
 
-### What’s the difference between random forest and gradient boosting? ‍⭐️
+A diferença fundamental é que a Random Forest usa a técnica de ensacamento para fazer previsões. 
 
-Random Forests builds each tree independently while Gradient Boosting builds one tree at a time.
-Random Forests combine results at the end of the process (by averaging or “majority rules”) while Gradient Boosting combines results along the way.
+O GBM usa técnicas de reforço para fazer previsões.
 
-### Q21. Both being tree based algorithm, how is random forest different from Gradient boosting algorithm (GBM)?
+Na técnica de ensacamento, um conjunto de dados é dividido em n amostras usando amostragem aleatória. Em seguida, usando um único algoritmo de aprendizado, um modelo é construído em todas as amostras. Mais tarde, as previsões resultantes são **combinadas** usando votação ou média. O ensacamento é feito em paralelo. Ao aumentar, após a primeira rodada de previsões, o algoritmo pesa previsões mal classificadas mais altas, de modo que elas possam ser corrigidas na rodada seguinte. Esse processo seqüencial de atribuir pesos mais altos a previsões classificadas incorretamente continua até que um critério de parada seja alcançado.
 
-https://www.analyticsvidhya.com/blog/2016/09/40-interview-questions-asked-at-startups-in-machine-learning-data-science/
-
-Answer: The fundamental difference is, random forest uses bagging technique to make predictions. GBM uses boosting techniques to make predictions.
-
-In bagging technique, a data set is divided into n samples using randomized sampling. Then, using a single learning algorithm a model is build on all samples. Later, the resultant predictions are combined using voting or averaging. Bagging is done is parallel. In boosting, after the first round of predictions, the algorithm weighs misclassified predictions higher, such that they can be corrected in the succeeding round. This sequential process of giving higher weights to misclassified predictions continue until a stopping criterion is reached.
-
-Random forest improves model accuracy by reducing variance (mainly). The trees grown are uncorrelated to maximize the decrease in variance. On the other hand, GBM improves accuracy my reducing both bias and variance in a model.
+A Random Forest melhora a precisão do modelo reduzindo a variação (principalmente). As árvores cultivadas não são correlacionadas para maximizar a diminuição da variação. Por outro lado, o GBM melhora a precisão, reduzindo o viés e a variação de um modelo.
 
 ---
 ---
 ---
 
-## Parameter tuning
+## Reajuste de Hyper Parâmetros (melhorar modelo)
 
+### Que estratégias de ajuste de hyper parâmetros você conhece?
 
-### Which hyper-parameter tuning strategies (in general) do you know? ‍⭐️
+Dissecar
+[https://towardsdatascience.com/hyperparameter-tuning-explained-d0ebb2ba1d35](https://towardsdatascience.com/hyperparameter-tuning-explained-d0ebb2ba1d35)
+[https://towardsdatascience.com/8-advanced-python-tricks-used-by-seasoned-programmers-757804975802](https://towardsdatascience.com/8-advanced-python-tricks-used-by-seasoned-programmers-757804975802)
 
-There are several strategies for hyper-tuning but I would argue that the three most popular nowadays are the following:
+Existem várias estratégias para o hiper-ajuste, mas eu argumentaria que as três mais populares atualmente são as seguintes:
 
-Grid Search is an exhaustive approach such that for each hyper-parameter, the user needs to manually give a list of values for the algorithm to try. After these values are selected, grid search then evaluates the algorithm using each and every combination of hyper-parameters and returns the combination that gives the optimal result (i.e. lowest MAE). Because grid search evaluates the given algorithm using all combinations, it’s easy to see that this can be quite computationally expensive and can lead to sub-optimal results specifically since the user needs to specify specific values for these hyper-parameters, which is prone for error and requires domain knowledge.
+A Grid Search (pesquisa em grade)  é uma abordagem exaustiva, de modo que, para cada hiper-parâmetro, o usuário precisa fornecer manualmente uma lista de valores para o algoritmo testar. Depois que esses valores são selecionados, a Grid Search avalia o algoritmo usando cada combinação de hiper-parâmetros e retorna a combinação que fornece o resultado ideal (ou seja, MAE mais baixo). Como a grid search avalia o algoritmo fornecido usando todas as combinações, é fácil ver que isso pode ser bastante computacional e pode levar a resultados abaixo do ideal, uma vez que o usuário precisa especificar valores específicos para esses hiper-parâmetros, o que é propenso a erros e requer conhecimento de domínio.
 
-Random Search is similar to grid search but differs in the sense that rather than specifying which values to try for each hyper-parameter, an upper and lower bound of values for each hyper-parameter is given instead. With uniform probability, random values within these bounds are then chosen and similarly, the best combination is returned to the user. Although this seems less intuitive, no domain knowledge is necessary and theoretically much more of the parameter space can be explored.
+...
+
 
 ---
 ---
 ---
+
+## Feature Selection
+
+[link mosntruoso](https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/)
+
++ Feature Selection: Select a subset of input features from the dataset.
+  - Unsupervised: Do not use the target variable (e.g. remove redundant variables).
+    *Correlation
+  - Supervised: Use the target variable (e.g. remove irrelevant variables).
+    * Wrapper: Search for well-performing subsets of features.
+      + RFE
+    * Filter: Select subsets of features based on their relationship with the target.
+      + Statistical Methods
+      + Feature Importance Methods
+    * Intrinsic: Algorithms that perform automatic feature selection during training.
+      + Decision Trees
++ Dimensionality Reduction: Project input data into a lower-dimensional feature space.
+
+
+<div style="text-align: center;">
+<img src="../img/features-selection-01.png"  />
+<img src="../img/features-selection-02.png"  />
+<img src="../img/features-selection-03.png"  />
+</div>
+
++ Numerical Variables
+  - Integer Variables.
+  - Floating Point Variables.
++ Categorical Variables.
+  - Boolean Variables (dichotomous).
+  - Ordinal Variables.
+  - Nominal Variables.
+
+Numerical Output: Regression predictive modeling problem.
+Categorical Output: Classification predictive modeling problem.
+
+
+How to Choose Feature Selection Methods For Machine Learning
+
+### Numerical Input, Numerical Output
+
+This is a regression predictive modeling problem with numerical input variables.
+
+The most common techniques are to use a correlation coefficient, such as Pearson’s for a linear correlation, or rank-based methods for a nonlinear correlation.
+
+- Pearson’s correlation coefficient (linear).
+- Spearman’s rank coefficient (nonlinear)
+
+### Numerical Input, Categorical Output
+
+This is a classification predictive modeling problem with numerical input variables.
+
+This might be the most common example of a classification problem,
+
+Again, the most common techniques are correlation based, although in this case, they must take the categorical target into account.
+
+- ANOVA correlation coefficient (linear).
+- Kendall’s rank coefficient (nonlinear).
+
+Kendall does assume that the categorical variable is ordinal.
+
+### Categorical Input, Numerical Output
+
+This is a regression predictive modeling problem with categorical input variables.
+
+This is a strange example of a regression problem (e.g. you would not encounter it often).
+
+Nevertheless, you can use the same “*Numerical Input, Categorical Output*” methods (described above), but in reverse.
+
+### Categorical Input, Categorical Output
+
+This is a classification predictive modeling problem with categorical input variables.
+
+The most common correlation measure for categorical data is the [chi-squared test](https://machinelearningmastery.com/chi-squared-test-for-machine-learning/). You can also use mutual information (information gain) from the field of information theory.
+
+- Chi-Squared test (contingency tables).
+- Mutual Information.
+
+In fact, mutual information is a powerful method that may prove useful for both categorical and numerical data, e.g. it is agnostic to the data types.
+
+## Tips and Tricks for Feature Selection
+
+This section provides some additional considerations when using filter-based feature selection.
+
+### Correlation Statistics
+
+The scikit-learn library provides an implementation of most of the useful statistical measures.
+
+For example:
+
+- Pearson’s Correlation Coefficient: [f_regression()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html)
+- ANOVA: [f_classif()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_classif.html)
+- Chi-Squared: [chi2()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.chi2.html)
+- Mutual Information: [mutual_info_classif()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html) and [mutual_info_regression()](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_regression.html)
+
+Also, the SciPy library provides an implementation of many more statistics, such as Kendall’s tau ([kendalltau](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kendalltau.html)) and Spearman’s rank correlation ([spearmanr](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.spearmanr.html)).
+
+### Selection Method
+
+The scikit-learn library also provides many different filtering methods once statistics have been calculated for each input variable with the target.
+
+Two of the more popular methods include:
+
+- Select the top k variables: [SelectKBest](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html)
+- Select the top percentile variables: [SelectPercentile](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectPercentile.html)
+
+I often use *SelectKBest* myself.
+
+### Transform Variables
+
+Consider transforming the variables in order to access different statistical methods.
+
+For example, you can transform a categorical variable to ordinal, even if it is not, and see if any interesting results come out.
+
+You can also make a numerical variable discrete (e.g. bins); try categorical-based measures.
+
+Some statistical measures assume properties of the variables, such as Pearson’s that assumes a Gaussian probability distribution to the observations and a linear relationship. You can transform the data to meet the expectations of the test and try the test regardless of the expectations and compare results.
+
+### What Is the Best Method?
+
+There is no best feature selection method.
+
+Just like there is no best set of input variables or best machine learning algorithm. At least not universally.
+
+Instead, you must discover what works best for your specific problem using careful systematic experimentation.
+
+Try a range of different models fit on different subsets of features chosen via different statistical measures and discover what works best for your specific problem.
+
+### Quando fazer
+
+1. ** Você tem conhecimento de domínio? ** Se sim, construa um conjunto melhor de recursos ad hoc ””
+2. ** Seus recursos são proporcionais? ** Se não, considere normalizá-los.
+3. ** Você suspeita de interdependência de recursos? ** Em caso afirmativo, expanda seu conjunto de recursos construindo recursos conjuntivos ou produtos de recursos, tanto quanto os recursos do seu computador permitirem.
+4. ** Você precisa remover as variáveis ​​de entrada (por exemplo, por razões de entendimento de custo, velocidade ou dados)? ** Se não, construa recursos disjuntivos ou somas ponderadas de recursos
+5. ** Você precisa avaliar os recursos individualmente (por exemplo, para entender sua influência no sistema ou porque seu número é tão grande que você precisa fazer uma primeira filtragem)? ** Se sim, use um método de classificação variável; caso contrário, faça-o assim mesmo para obter resultados de linha de base.
+6. ** Você precisa de um preditor? ** Se não, pare
+7. ** Você suspeita que seus dados estejam "sujos" (possui alguns padrões de entrada sem sentido e / ou saídas ruidosas ou rótulos de classe incorretos)? ** Se sim, detecte os exemplos outlier usando as principais variáveis ​​de classificação obtidas na etapa 5 como representação; verifique e / ou descarte-os.
+8. ** Você sabe o que tentar primeiro? ** Se não, use um preditor linear. Use um método de seleção direta com o método "probe" como critério de parada ou use o método incorporado de norma 0 para comparação, seguindo a classificação da etapa 5, construa uma sequência de preditores da mesma natureza usando subconjuntos crescentes de recursos. Você pode igualar ou melhorar o desempenho com um subconjunto menor? Se sim, tente um preditor não linear com esse subconjunto.
+9. ** Você tem novas idéias, tempo, recursos computacionais e exemplos suficientes? ** Se sim, compare vários métodos de seleção de recursos, incluindo sua nova ideia, coeficientes de correlação, seleção reversa e métodos incorporados. Use preditores lineares e não lineares. Selecione a melhor abordagem com a seleção de modelos
+10. ** Deseja uma solução estável (para melhorar o desempenho e / ou a compreensão)? ** Se sim, subamostra os dados e refaça a análise para várias "instruções de inicialização".
+
+---
+---
+---
+
+<!-- 
 
 ## Dimensionality reduction
 
 ### What is the curse of dimensionality? Why do we care about it? ‍⭐️
 
 Data in only one dimension is relatively tightly packed. Adding a dimension stretches the points across that dimension, pushing them further apart. Additional dimensions spread the data even further making high dimensional data extremely sparse. We care about it, because it is difficult to use machine learning in sparse spaces.
-
-
 
 ### Do you know any dimensionality reduction techniques? ‍⭐️
 
@@ -726,7 +1080,7 @@ The two independent variables that you see, indexed by 0 and 1, are new independ
 How to decide the LDA n_component parameter in order to find the most accurate result?
 You can run:
 
-LDA(n\_components = None)
+LDA(n\_components = None
 and it should give you automatically the ideal n_components.
 
 How can I get the two Linear Discriminants LD1 and LD2 in Python?
@@ -748,21 +1102,32 @@ Possui mesma função do PCA mas envolve a classe dos dados, ou seja, é um algo
 
 • Das m variáveis independentes, LDA extrai p <= m novas variáveis independentes que mais separam as classes da variável dependente
 
+-->
 
----
----
----
+## Add
 
-## Case Studies
++ + Tratar outilers no y de regresssâo: winsorizar
++ Se precizar de GPU para coisas extermamente seriesas, pode-se pensar em alugar a AWS que tem GPU pra essas coisas.
++ É sempre usar métricas de acordo com o negócio que está resolvendo: 
+  - Em geral selecione uma primaria de acordo com o problema
+   - Dpeois escolheas outra para ter mais ângulos de observação
 
-### Q4. You are given a data set on cancer detection. You’ve build a classification model and achieved an accuracy of 96%. Why shouldn’t you be happy with your model performance? What can you do about it?
+   => Uma ideia interressante seria fazer um modelo focado em recall primiero e depois outro apra precision
 
-https://www.analyticsvidhya.com/blog/2016/09/40-interview-questions-asked-at-startups-in-machine-learning-data-science/
+==> recall x precision: se detectar positivos/negativos for mais importante que acertar positivos/negativos, entâo recall é m ais imporatnte
 
-Answer: If you have worked on enough data sets, you should deduce that cancer detection results in imbalanced data. In an imbalanced data set, accuracy should not be used as a measure of performance because 96% (as given) might only be predicting majority class correctly, but our class of interest is minority class (4%) which is the people who actually got diagnosed with cancer. Hence, in order to evaluate model performance, we should use Sensitivity (True Positive Rate), Specificity (True Negative Rate), F measure to determine class wise performance of the classifier. If the minority class performance is found to to be poor, we can undertake the following steps:
+==> Se nâo há ponto de corte e dados desbalanceados: AUC e PRC 
 
-We can use undersampling, oversampling or SMOTE to make the data balanced.
-We can alter the prediction threshold value by doing probability caliberation and finding a optimal threshold using AUC-ROC curve.
-We can assign weight to classes such that the minority classes gets larger weight.
-We can also use anomaly detection.
-Know more: Imbalanced Classification
+==> Como saber se ocorreu ovefiting: 
++ Em geral é quando score de testes está diferente do score de treinamento
+
++ Quando fazer feature selection:
+  - Quando houver muitas features com um dataset pequeno
+  - Usa-se o valor p (pearson) para encontrar a correlação entre x e y
+  - As vezes, em vez de fazer feature selection, para regressão, pode ser necesśario fazer Lasso//Ridge
+
+  HUGE GLOSSARY
+
+  https://ml-cheatsheet.readthedocs.io/en/latest/index.html
+  https://peltarion.com/knowledge-center/documentation/glossary
+  http://deeplearningbook.com.br/
