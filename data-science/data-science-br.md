@@ -9,6 +9,14 @@ description: Questões de DataScience e Machine Learning
 ## Links
 + [https://br.bitdegree.org/tutoriais/data-science/#Dicas_gerais_e_resumo](https://br.bitdegree.org/tutoriais/data-science/#Dicas_gerais_e_resumo)
 
+## Glossário
+
+ALguns termos preferi manter em ingles
+
++ dataset: o conjunto de dados
++ rows: linhas, no caso os registro da dataset
++ 
+
 ## Conceituais e Teóricas
 
 ### DS-001 - O que é Data Science?
@@ -407,6 +415,8 @@ Métrica possível para avaliar o modelo de classificação para todas as classe
 
 Acurácia é a porcentagem total dos itens classificados **corretamente**
 
+A pergunta que a acurácia responde é a seguinte: no geral, o quão frequente o classificador está correto?
+
 <div style="text-align: center;">
 	<img src="../img/metricas-erros-03.png" />
 </div>
@@ -433,7 +443,17 @@ Precisão = TP / (TP + FP)
 <img src="../img/metricas-erros-06.png" />
 </div>
 
+Trabalha com o Erro do tipo 1 (Falso Positivo): pega a vertical de TP com FP
+
+TP FN
+FP TN
+
+Se digo que pertence a classe X, qual a certeza de está certo (qua bem acerto registro de classe X quando afirma que é da classe X)
++ Pega no pé de dizer que pertence a essa classe quano na verdade nao pertence (erro tipo1)
+
 - Definição de Precisão: **Dos casos que eu previ como positivos (para uma classe) quantos realmente são?**
+  - daqueles que classifiquei como corretos, quantos efetivamente eram?
+  - Ex: se minha precisão for 98% para a classe 0, significa que, se vinher um registro classe 0, eu vou acertar muito
 - Envio de cupons de desconto, custos diferentes para cada erro.
 - Ex: se custa caro mandar a promoção, das pessoas que eu previ que iam comprar, quantas compraram?
 
@@ -451,7 +471,19 @@ The recall is alternatively called a true positive rate. It refers to the number
 	<img src="../img/metricas-erros-05.png" />
 </div>
 
+Trabalha com o **Erro Tipo 2 / Taxa de Falso Negativo | False Negative Rate**: 
+pega a horizontal de TP com TN
+
+TP FN
+FP TN
+
+Para os registros, quao bem diferencia se eles pertencem ou não a essa classe
++ Pega no pé no fato de dizer que não pertence quando na verdade pertence (erro tipo2)
+
+
 - Definição de Recall: dos que eram realmente positivos (para uma classe) quantos eu detectei?
+  - O recall é a frequência em que o seu classificador encontra os exemplos de uma classe: “quando realmente é da classe X, o quão frequente você classifica como X?”
+  - Ex: se meu recall é de 98% para a classe 1, significa que,
 - Chamado de taxa de detecção
 
 #### Especificidade, Seletividade Specifity, TNR (True Negative Rate)
@@ -961,6 +993,39 @@ Try a range of different models fit on different subsets of features chosen via 
 ---
 ---
 
+## Box Plot - Como interpretar
+
+<div style="text-align: center;">
+<img src="../img/boxplot-01.png"  />
+<img src="../img/boxplot-02.png"  />
+<img src="../img/boxplot-03.png"  />
+</div>
+
+Trata de ver a extensão dos dados, o range junto com outra medidas.
+
+A reta que separa a caixa é a mediana (o valor que ficaria no meio da distribuiçâo se os dados forem ordenados). Isso quer dizer que, dado a mediadna, metade dos dados estao abaixo dela e a outra metade acima do valor da mediana
+
+Os limite da caixa: Representam outras medianas. Ou seja, o valor que esta no meio da parte de baixo e da parte de cima, 
+
+Assim, a caixa é o seguinte intervalo:
+25%|50%|75% = Na caixa há 50% 
+E as linhas os 25% menores e maiores valores
+
+1 Quartil: da linha até a borda da caixa: range entre 0 e 25%
+
+EXISTENCIA DE OUTILIERS:
+
+É calculado dois valores para serem os limites:
+max_da_corda = Q3 + 1,5 (Intervalo Q1<->Q3)
+min_da_corda = Q1 - 1,5 (Intervalo Q1<->Q3)
+
+Assim: eu garanto que 99% das amostra estarao dentro desse boxplot, que na distribuiçâo normal é 6 sigma.
+
+Outilers: 
++ podem ser eventos raros que realmente acontece em seu experiemnto
+  - MEsmo assim vc pode quere ele fora, já que sao raros e podem influenciar seu modelo
++ Podem ser dados errados, e asism é melhor excluilos
+
 <!-- 
 
 ## Dimensionality reduction
@@ -1104,6 +1169,121 @@ Possui mesma função do PCA mas envolve a classe dos dados, ou seja, é um algo
 
 -->
 
+## Reduçâo de Dimensionliade PCA, LDA, T-sne e etc..
+
+A reduçâo de dimensionalidade pode ser uma boa técninaca visual para provar que os dados de classes diferentes são passíveis de serem separavies, ou seja, aplicando uma tecnica de reduçâo e em seguida mostrando clusters em graficos, se você consegue separar os dadso de cada classe, entoa, a classificaçâo deverá ser possível
+
+### t-sen original
+
+t-sne (se fala ti-isni) é uma técninca para reduzir a dimensionaldiade preservando a separaçâo de clusters
+
+### t-sne
+
+https://www.analyticsvidhya.com/blog/2017/01/t-sne-implementation-r-python/
+https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding
+https://towardsdatascience.com/an-introduction-to-t-sne-with-python-example-5a3a293108d1
+https://www.datacamp.com/community/tutorials/introduction-t-sne?utm_source=adwords_ppc&utm_campaignid=1455363063&utm_adgroupid=65083631748&utm_device=c&utm_keyword=&utm_matchtype=b&utm_network=g&utm_adpostion=&utm_creative=332602034358&utm_targetid=aud-299261629574:dsa-429603003980&utm_loc_interest_ms=&utm_loc_physical_ms=1001520&gclid=CjwKCAjw1K75BRAEEiwAd41h1PJ-mOJFa1k75ThPZd7d6BjS6itByrtS4fM95X_8-atp4MYPq_63khoCE1IQAvD_BwE
+
+Para entender esse algoritmo, você precisa entender os seguintes termos:
++ Distância euclidiana
++ Probabilidade Condicional
++ Gráficos normais e de distribuição T
+
+https://www.youtube.com/watch?v=NEaUSP4YerM
+
+O algoritmo t-SNE pode agrupar com precisão os casos de fraude e não fraude em nosso conjunto de dados.
+Embora a subamostra seja bastante pequena, o algoritmo t-SNE é capaz de detectar clusters com muita precisão em todos os cenários (embaralhe o conjunto de dados antes de executar o t-SNE)
+Isso nos dá uma indicação de que outros modelos preditivos terão um bom desempenho na separação de casos de fraude de casos não fraudulentos.
+
+---
+
+t-Distributed Stochastic Neighbour Embedding2 (t-SNE, pronunciado tí-ciní) é uma técnica de visualização em 1D, 2D ou 3D de datasets de altas dimensões.
+
+O t-SNE, desenvolvido por Laurens van der Maaten e Geoffrey Hinton, é um refinamento do SNE e se diferencia deste, principalmente, pela utilização de distribuição t de Student para representar os dados em baixas dimensões (ou dados mapeados).
+
+O t-SNE utiliza um kernel gaussiano para converter pontos em altas dimensões para probabilidades de conexões (P) e um kernel t-Student, com um grau de liberdade, para representar as probabilidades de conexões entre os pontos em baixas dimensões (Q), no espaço mapeado. O custo das diferenças entre as duas distribuições P e Q é modelado pela divergência de Kullbach-Leibler20, o gradiente desta função (ver [Equação 5] abaixo) é utilizado para atualizar o mapa de pontos em baixas dimensões.
+
+O t-SNE não tem garantia de convergir mas produz resultados muito bons, como por exemplo, o mapeamento das 784 dimensões do MNIST para apenas duas (ou tres, se contarmos os canais cores e marcas - que representam a mesma informação), como mostrada no gráfico abaixo, implementado com Tensorflow.js17
+
+
+---
+
+## Dimensionar (Scale), padronizar (Standardize), or normalizar (Normalize)
+
+link: https://towardsdatascience.com/scale-standardize-or-normalize-with-scikit-learn-6ccc7d176a02
+
+MinMaxScaler, RobustScaler, StandardScaler, and Normalizer are scikit-learn methods to preprocess data for machine learning.
+
+Escala (Scale) : Alterar intervalo de valores sem mudar a distribuição
++ Geralmente significa alterar o intervalo dos valores. O formato da distribuição não muda. Pense em como um modelo em escala de um edifício tem as mesmas proporções que o original, apenas menor. É por isso que dizemos que é re-desenhado em escala. O intervalo geralmente é definido de 0 a 1. Seria por exemplo, uma aplicação de regra de 3 para reduzir de um intervalo maior para menor
+
+Padronizar (Standard) : Converte numa distribuição Normal
++ Geralmente significa alterar os valores para que o desvio padrão da distribuição da média seja igual a um. Produz algo muito próximo a uma distribuição normal. A escala é frequentemente implícita.
+
+Normalizar (Normalize) : L1 e L2
++ Pode ser usado para significar uma das coisas acima (e mais!). Sugiro que você evite o termo normalizar, porque ele tem muitas definições e é propenso a criar confusão
+
+**Scales**
+
+**`MinMaxScaler`**
+
+<div style="text-align: center;">
+<img src="../img/min-max-scale.png" />
+</div>
+
++ Preserva a forma da distribuição
++ Não reduz a importância dos outiliers
++ Em geral a *range* fica entre \[0,1\]
+
+O MinMaxScaler é um bom escalador para começar, a menos que você 
+saiba que sua feature seja uma distribuição normal ou que os outliers tenham influência reduzida.
+
+**`RobustScaler`**
+
+<div style="text-align: center;">
+<img src="../img/robust-scale.png" />
+</div>
+
+transforma o vetor de recurso subtraindo a mediana e depois dividindo pelo intervalo interquartil (valor de 75% - valor de 25%).
+
+Use RobustScaler se você deseja reduzir os efeitos de valores discrepantes, em relação ao MinMaxScaler.
+
+**`StandardScaler`**
+
+<div style="text-align: center;">
+<img src="../img/standard-scale.png" />
+</div>
+
++ Para distribuições normais
++ O StandardScaler distorce as distâncias relativas entre os valores dos recursos, por isso geralmente é minha segunda opção nessa família de transformações.
+
+**`Normalizer`**
+
+<div style="text-align: center;">
+<img src="../img/normalizer-scale.png" />
+</div>
+
++ Trabalha sobre as linhas, não as colunas
++ As normalizaçôes L1 e L2 aplicam uma penalizaçâo as linhas
++ Tranfroam entre 1 e -1
+
+**Resumo**
+
+
++ Use MinMaxScaler como padrão se você estiver transformando um recurso. Não distorce.
++ Você pode usar o RobustScaler se tiver discrepâncias e quiser reduzir a influência delas. No entanto, é melhor remover os valores discrepantes.
++ Use o StandardScaler se precisar de uma distribuição relativamente normal.
++ Use o Normalizador com moderação - normaliza as linhas de amostra, não as colunas de recursos. Pode usar a normalização l2 ou l1.
+
+<div style="text-align: center;">
+<img src="../img/compare-scales.png" />
+</div>
+
+<div style="text-align: center;">
+<img src="../img/scales.png" />
+</div>
+
+
 ## Add
 
 + + Tratar outilers no y de regresssâo: winsorizar
@@ -1131,3 +1311,123 @@ Possui mesma função do PCA mas envolve a classe dos dados, ou seja, é um algo
   https://ml-cheatsheet.readthedocs.io/en/latest/index.html
   https://peltarion.com/knowledge-center/documentation/glossary
   http://deeplearningbook.com.br/
+
+  NEXT
+
+  Lista de distribuiçôes possíveis
+
+## DataSet Desbalanceado para CLassificaçâo
+
+link: 
+
++ https://medium.com/data-hackers/como-lidar-com-dados-desbalanceados-em-problemas-de-classifica%C3%A7%C3%A3o-17c4d4357ef9
+
++ https://machinelearningmastery.com/combine-oversampling-and-undersampling-for-imbalanced-classification/
+
+Imagine você ter a tareda de dado um email, verificar quais são ou são SPAM. O problema é possívelmente ocorreria é que para uma pessoa normal, a quantidade de emails SPAM é muito pequena, tipo 1%. Então para um dataset de 1000 registros de emails teriamos apenas 10 como sendo SPAM. Essa diferença, esse desbalanceamento muda a forma de avaliarmos os nossos modelos, pois poderiamos classificar 99% como Nâo SPAM e teriamos um modelo de Acurracy de 99%, o que pareceria um modelo percefeito mas na verdade incapaz de fazer a tarefa. 
+
+**Avaliar modelos para datasets desbalanceado**
+
+Por isso, avaliar precision/recall/f1-score das classes se torna imporante. Um boa métrica de avaliaçâo para um modelo desbalanceado seria a média de f1-score das classes, pois assim saberiamos se o modelo consegue classificar bem mesmo para um subconjunto nao pequeno de dados (no caso a classe de SPAM).
+
+**Como treinar sobe um dataset desbalanceado**
+
+Como já deve ter percebido, essa difereça causa um grande impacto sobre no treinmento, já que havera poucos dados para o nosso modelo aprender o padrao de uma classe. ENtão a soluçâo é alterar: **Alterar o dataset na hora do treinamento da rede, para que o dataset se torne balanceado**.
+
+No exmeplo do SPAM há duas abordagem para que o dataset fique balanceado
+
++ **UnderSampling**: Retirar rows de linhas Nao SPAM Para que tenha a mesma quantidade que NÃO SPAM.
++ **OverSampling**: Criar rows SPAM para que fique com mesma quantidade de rows que NÃO SPAM.
+
+<div style="text-align: center;">
+<img src="../img/over-under-sampling.png" />
+</div>
+
+Para ambos há várias técnicas.
+
+Para saber mais detalhes sobre as técnicas há a lib que trata essa questão de balacneamento e desbalanceamento
+
+````
+$ sudo pip install imbalanced-learn
+# 
+````
+
+````
+
+# check version number
+import imblearn
+print(imblearn.__version__)
+
+````
+
+### UnderSampling
+
++ Random UnderSampling: A técnica mais simples, tirar row aleartórias para que ambas as clases tenha mesma quantidade de row no dataset.
+
++ NeighbourhoodCleaningRule: Aplica o algoritmo dos vizinhos próximos e remove as observações que não se enquadram. A cada iteração é aumentado a quantidade de vizinhos próximos no modelo.
+
++ AllKNN: Foca em limpar os dados e não condensá-los.
+
+
+### OverSampling 
+
++ Random Oversampling: Randomly duplicate examples in the minority class.
+
++ SMOTE: Primeiro passo é encontrar os vizinhos próximos para as classes em minoria para cada amostra das classificações. Em seguida, traça uma reta entre o ponto original e o vizinho para definir a localização da observação da observação genérica.
+
+### ReSampling
+
+Seria aplciar UnderSampling na clase que tem mais e overSampling na classe que tem menos.
+
+Duas técnicas de under sampling (TomekLinks e nearest-neighbours) combinadas com SMOTE para obter uma amostra mais limpa e com as classificações bem balanceadas. Essa combinação resulta em dois modelos de over e under sampling chamadas SMOTETomek e SMOTEENN por exemplo.
+
+### Como proceder
+
+Pode-se buscar testas várias combinações de under e over sampling das mais diversas técnicas para buscar a que melhor der resultado.
+
+Exemplo de instâncias de `imblearn` para fazer esse  *sampling*
+
+link: https://machinelearningmastery.com/combine-oversampling-and-undersampling-for-imbalanced-classification/
+
+[Paper Academico - A Study of the Behavior of Several Methods for Balancing Machine Learning Training Data](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.58.7757&rep=rep1&type=pdf)
+
+>  Our results show that the
+over-sampling methods in general, and Smote + Tomek and
+Smote + ENN (two of the methods proposed in this work) in
+particular for data sets with few positive (minority) examples, provided very good results in practice. Moreover, Random over-sampling, frequently considered an unprosperous
+method provided competitive results with the more complex
+methods. As a general recommendation, Smote + Tomek or
+Smote + ENN might be applied to data sets with a small
+number of positive instances, a condition that is likely to
+lead to classification performance problems for imbalanced
+data sets. For data sets with larger number of positive examples, the Random over-sampling method which is computationally less expensive than other methods would produce
+meaningful results
+
+
+
+````python
+from imblearn.under_sampling import RandomUnderSampler, TomekLinks
+from imblearn.over_sampling import RandomOverSampler, SMOTE
+from imblearn.combine import SMOTEENN, SMOTETomek
+
+# Exemplos de ReSmalping
+
+from collections import Counter
+print('Resampled dataset shape %s' % Counter(y_res))
+# SHOW: Resampled dataset shape Counter({0: 900, 1: 881})
+
+# Random OverSamlping + Random UnderSampling
+over = RandomOverSampler(sampling_strategy=0.1)
+under = RandomUnderSampler(sampling_strategy=0.5)
+
+# SMOTE OverSamlping + Random UnderSampling
+over = SMOTE(sampling_strategy=0.1)
+under = RandomUnderSampler(sampling_strategy=0.5)
+
+# SMOTE OverSamlping + Tomek UnderSampling
+resample = SMOTETomek(tomek=TomekLinks(sampling_strategy='majority'))
+
+# SMOTE OverSamlping + ENN UnderSampling
+resample = SMOTEENN()
+````
+
