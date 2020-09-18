@@ -1429,5 +1429,61 @@ resample = SMOTETomek(tomek=TomekLinks(sampling_strategy='majority'))
 
 # SMOTE OverSamlping + ENN UnderSampling
 resample = SMOTEENN()
+
+
 ````
+
+-------
+-------
+-------
+
+Reler e colocar tudo aqui
+
+https://towardsdatascience.com/20-popular-machine-learning-metrics-part-1-classification-regression-evaluation-metrics-1ca3e282a2ce
+
+https://towardsdatascience.com/your-ultimate-data-science-statistics-mathematics-cheat-sheet-d688a48ad3db
+
+https://towardsdatascience.com/your-ultimate-data-manipulation-cleaning-cheat-sheet-731f3b14a0be
+
+https://towardsdatascience.com/your-ultimate-data-mining-machine-learning-cheat-sheet-9fce3fa16
+
+https://towardsdatascience.com/your-ultimate-python-visualization-cheat-sheet-663318470db
+
+https://towardsdatascience.com/20-popular-machine-learning-metrics-part-1-classification-regression-evaluation-metrics-1ca3e282a2ce
+
+-------
+-------
+--------
+
+## Hyper Params TUNING
+
+
+LInk muito bom com descriçâo dos chyperparametros de alguns modelos
+
+https://towardsdatascience.com/hyper-parameter-tuning-and-model-selection-like-a-movie-star-a884b8ee8d68
+
+
+------
+-------
+---------
+
+## Tips Pytho
+
+https://medium.com/towards-artificial-intelligence/50-python-3-tips-tricks-e5dbe05212d7
+
+Algumas devem ser boa
+
+-----
+------
+-------
+
+## CHosse ML MODEL
+
+https://scikit-learn.org/stable/tutorial/machine_learning_map/
+
+## Feature Selection
+
+DISSECAR ESSE ARTIGO
+
+https://medium.com/data-hackers/como-selecionar-as-melhores-features-para-seu-modelo-de-machine-learning-faf74e357913
 
