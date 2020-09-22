@@ -7,126 +7,67 @@ description: Questões de DataScience e Machine Learning
 ## Índex
 
 ## Links
+
 + [https://br.bitdegree.org/tutoriais/data-science/#Dicas_gerais_e_resumo](https://br.bitdegree.org/tutoriais/data-science/#Dicas_gerais_e_resumo)
 
 ## Glossário
 
-ALguns termos preferi manter em ingles
+Alguns termos preferi manter em inglês
 
 + dataset: o conjunto de dados
 + rows: linhas, no caso os registro da dataset
-+ 
-
-## Conceituais e Teóricas
-
-### DS-001 - O que é Data Science?
-
-Ciência de dados é a atividade de extrair informação a apartir de dados, estruturados (usando ml) ou não estruturados ( usando dl).
-
-Data Science NÃO É IA, Estatística, ML (Machine Learning), Big Data, Power BI nem Algoritmos.
-
-### DS-002 - O que é Big Data?
-
-Big data significa ter enorme volume de dados. O termo em si significa isso mas pode engloba toda a parte de arquitetura de uma empresa para suportar ter esse dados (como o Hadoop).
-
-### DS-003 - Qual é a diferença entre ‘data science’ e ‘big data’?
-
-Big Data em si não traz valor algum sem a técnica de Data Science. Então, Big Data é um objeto de análise de Data Science.
-
-### DS-004 - Qual é a diferença entre um ‘data scientist’ e um ‘data analyst’?
-
-A DataScience busca retirar informações apartir de técnicas computacionais: para Classificação, Regressão e etc..
-
-Data Analytics resolve problemas de negócios, utilizando mais a estatística para resolver as coisas.
-
-### DS-005 - Quais são os recursos fundamentais que representam big data?
-
-Agora que abordamos as definições, podemos passar para as perguntas mais específicas de uma entrevista sobre data science. Tenha em mente, porém, que você será obrigado a responder perguntas relacionadas a data scientist, data analyst e big data. A razão para isso acontecer é porque todas essas subcategorias estão interligadas entre si.
-
-Existem cinco categorias que representam big data e são chamadas de ” 5 Vs “:
-
-+ Valor;
-+ Variedade;
-+ Velocidade;
-+ Veracidade;
-+ Volume.
-
-Todos esses termos correspondem ao Big Data de uma maneira ou de outra.
-
-### DS-006 - Qual a diferença entre IA, ML e DL?
-
-ML, DL e NN (Neural Networks) são subconjuntos da área de INteligência Artificial
-
-IA < ML < DL 
-
-<img src="../img/difference-ia-ds-ml.png" />
-
-ML é uma área de IA que trata de algoritmos ou técnicas computacionais para máquinas/modelo/algoritmo aprender automaticamente com os dados.
-
-DL é um conjunto de ML que trata das redes neurais com várias camadas e mais complexas.
 
 ---
 ---
 ---
 
-## + Técnicas 
+## Random Questions 
 
-### DS-007 - O que é Overfitting, Underfitting e Generalization, Bias e Variância?
+### Overfitting, Underfitting e Generalization, Bias e Variância?
 
-<img src="../img/overffiting-underfiting.png" />
+<img src="../../img/overffiting-underfiting.png" />
 
-<img src="../img/bias-variance.png" />
+<img src="../../img/bias-variance.png" />
 
-+ **High Variance:** Baixo erro em dados de treino e alto erro em dados de teste
-+ **High Bias:** Alto erro em dados de treino e erro parecido em dados de teste
-+ **High Bias and Variance**: Alto erro em dados de treino e erro maior em dados de teste
-+ **Low Bias and Variance:** Baixo erro em dados de treino e baixo erro em dados de teste
+**Bias**
 
-**What is low/high bias/variance?**
++ **High Bias:** Alto Baias é quando as previsões do seu modelo estão longe dos valores reais. 
++ **Low Bias**: Baixo baias é quando as previsões do seu modelo estão muito próximas dos valores reais. 
 
-These concepts are important to understand k-Fold Cross Validation:
-Low Bias is when your model predictions are very close to the real values.
-High Bias is when your model predictions are far from the real values.
-Low Variance: when you run your model several times, the different predictions of your observation points
-won’t vary much.
-High Variance: when you run your model several times, the different predictions of your observation points
-will vary a lot.
+**Variance**
 
-### DS-010 - Qual é a diferença entre o aprendizado ‘supervisionado’ e ‘não supervisionado’?
++ **Low Variance** Baixa variação: quando você executa seu modelo várias vezes, as diferentes previsões de seus pontos de observação não variam muito. 
++ **High Variance** Alta Variância: quando você executa seu modelo várias vezes, as diferentes previsões de seus pontos de observação variam muito.
 
-Embora essa não seja uma das perguntas mais comuns das entrevistas, e, tenha mais a ver com machine learning do que com qualquer outra coisa, ela ainda assim pertence ao data science, portanto vale a pena saber a resposta.
+Busca-se baixo baias e variância.
+
+### Qual é a diferença entre o aprendizado ‘supervisionado’ e ‘não supervisionado’?
 
 Durante o aprendizado supervisionado, você infere uma função de uma parte rotulada de dados projetada para treinamento. Basicamente, a máquina aprenderia com os exemplos objetivos e concretos que você fornece.
 
 Aprendizado não supervisionado refere-se a um método de treinamento de máquina que não usa respostas rotuladas – a máquina aprende por descrições dos dados de entrada.
 
-### DS-012 - Qual a diferença entre Classificação e Regressão?
+### Qual a diferença entre Classificação e Regressão?
 
 Os dois são atividades que podem ser realizadas por modelos de ML para predição.
 
 A principal diferença é no valor de saída
 + Na classificação o valor é discreto (0 ou 1, ou [0,1,2,3..] ...)
+  - Em classificação, o objetivo é classificar uma row em determinada categoria.
+    + Exemplo: Dado uma row com características de uma flor, classificar que tipo de planta é ela (Iris)
 + Na regressão é contínuo (1,88; R$ 6.880,99 ...)
+  - Em regressão, o objetivo é obter um valor numérico
+    + Exemplo: Dado uma row de características de uma casa, predizer o valor dela  
 
-Em classificação, o objetivo é classificar uma row em determinada categoria.
-+ Exemplo: Dado uma row com características de uma flor, classificar que tipo de planta é ela (Iris)
-
-Em regressão, o objetivo é obter um valor numérico
-+ Exemplo: Dado uma row de características de uma casa, predizer o valor dela  
-
-
-### DS-001 Qual a diferença entre covariância e correlação?
+### Qual a diferença entre covariância e correlação?
 
 Correlação é a forma padronizada de covariância.
 
-Covariâncias são difíceis de comparar. Por exemplo: se calcularmos as covariâncias de salário ($) e idade (anos), teremos diferentes
-covariâncias que não podem ser comparadas por causa de escalas desiguais.
+Covariâncias são difíceis de comparar. Por exemplo: se calcularmos as covariâncias de salário ($) e idade (anos), teremos diferentes covariâncias que não podem ser comparadas por causa de escalas desiguais.
 
-Para combater essa situação, calculamos a correlação para obter um valor
-entre -1 e 1, independentemente da respectiva escala.
+Para combater essa situação, calculamos a correlação para obter um valor entre -1 e 1, independentemente da respectiva escala.
  
-
-### DS-001 - É possível capturar a correlação entre variável contínua e variável categórica? Se sim, como?
+### É possível capturar a correlação entre variável contínua e variável categórica? Se sim, como?
 
 Sim, podemos usar a técnica ANCOVA (análise de covariância) para capturar a associação entre variáveis contínuas e categóricas.
 
@@ -146,7 +87,9 @@ https://maestrovirtuale.com/analise-de-covariancia-ancova-o-que-e-e-como-e-usado
 
 ## Regressão e Regularização
 
-### O que é regressão? Que modelos você pode usar para resolver problemas de regressão
+### O que é regressão? 
+
+**Que modelos você pode usar para resolver problemas de regressão**
 
 A regressão faz parte da área  de aprendizagem supervisionado de ML. Os modelos de regressão investigam a relação entre uma variável (s) dependente (*target*) independente (s) (*features*).
 
@@ -158,9 +101,9 @@ Exemplos
 + **Regressão do lasso** penaliza os valores absolutos dos coeficientes de regressão e permite que alguns deles alcancem o zero absoluto (permitindo a seleção de recursos). Usa regularização L1.
 + **Regressão Elastic-Net**: Usa as regularização L1 e L2.
 
-### Quais métricas para avaliar modelos de regressão você conhece?
+### Quais métricas para avaliar modelos de regressão?
 
-<img src="../img/metricas-erros-01.png" />
+<img src="../../img/metricas-erros-01.png" />
 
 **Mean Squared Error(MSE) | Erro quadrático médio (EQM)**
 + Média da Somatória da diferença entre valor esperado (y) e valor previsto (ŷ) elevado ao quadrado
@@ -178,17 +121,17 @@ Exemplos
 + Ele acaba sendo uma aproximação do MSE para um **Erro percentual**
 + Matematicamente ele é mais fácil de minimizar
 + O MSE se importa com a diferença "absoluta", enquanto que o MSLE se importa com a diferença "relativa" por calcular o erro como uma *diferença percentual* entre o valor real (y) e o previsto (ŷ)
-+ [link +msle](https://peltarion.com/knowledge-center/documentation/modeling-view/build-an-ai-model/loss-functions/mean-squared-logarithmic-error-(msle))
-+ Costuma ser usado em vendas, exemplo: se eseprar vender 1000 e vende 1001 o impcato é menor pois só o fato de conseguir prever 1000 já é um grande ganho. Se usa-semos MSE o impcato entre y = 2 ŷ = 3 e seria o mesmo que y = 1000 e ŷ = 10001, que para uma venda, nâo é impcatante assim.
++ [link + msle](https://peltarion.com/knowledge-center/documentation/modeling-view/build-an-ai-model/loss-functions/mean-squared-logarithmic-error-(msle))
++ Costuma ser usado em vendas, exemplo: se espera vender 1000 e vende 1001 o impacto é menor pois só o fato de conseguir prever 1000 já é um grande ganho. Se usa-semos MSE o impacto entre y = 2 ŷ = 3 e seria o mesmo que y = 1000 e ŷ = 10001, que para uma venda, não é impactante assim.
 + **Comparando a questão de OutLiers entre MSE e MSLE**
   - O MSLE é sensível a outliers, bem menos que MSE porque há diferença que ele faz é relativa
 
-<img src="../img/msle-01.png" />
+<img src="../../img/msle-01.png" />
 
 **Mean Absolute Error(MAE) | Erro Absoluto Médio (EAM)**
 + Somatório da diferença entre o valor esperado (y) e o valor previsto (ŷ) dividido pela quantidade de previsões
-+ Não é sensitivo a outilers, por isso, é usada para quando não se quer que os outilers tenham impacato na avaliação
-+ Por isso você usa quando não tem outilers em geral, quando sâo extremamente raros
++ Não é sensitivo a outliers, por isso, é usada para quando não se quer que os outliers tenham impacto na avaliação
++ Por isso você usa quando não tem outliers em geral, quando são extremamente raros
 **Observação: MAE e MSE**
 + MSE e RMSE penalizam outliers e o MAE não
 + Então, se ao analisar seus dataset, os outliers existirem mas forem realmente parte dos seus dados, então, é recomendável usar MSE. 
@@ -197,11 +140,11 @@ Exemplos
 
 **MedAE - Median Absolute Error - Erro Mediano Absoluto**
 + As vezes também chamado de MAD
-+ Fórmula: É a mediana da Serie dos módulos dos erros abolutos para cada predição
++ Fórmula: É a mediana da Serie dos módulos dos erros absolutos para cada predição
   - 1. Forma uma lista dos erros absolutos; 2. Aplica módulo (todos ficam positivos); 3. busca a mediana
 + Quanto menor, melhor
 - Esse erro é raro de ver sendo usado, mas o foi no site de preço de casas na [Zillow](https://www.zillow.com/research/putting-accuracy-in-context-3255/)
-+ MedAE é uma medida robusta , similar ao MAE por ignorar muito outilers, pois, se o erro nos outilers forem muito grandes, eles vão para a cabeça(head) ou calda (tails) da lista e assim só vai mover o index da median uma casa pra frente/trás da listagem de erros absolutos.
++ MedAE é uma medida robusta , similar ao MAE por ignorar muito outliers, pois, se o erro nos outliers forem muito grandes, eles vão para a cabeça (head) ou calda (tails) da lista e assim só vai mover o index da mediana uma casa pra frente/trás da listagem de erros absolutos.
 
 Lembrando: Mediana é o valor que fica no meio caso você ordenar tudo em forma ascendente um conjunto de dados.
 
@@ -221,28 +164,26 @@ print("manual", median_error_manual, "| sklearn", median_absolute_error(y_true, 
 # manual 0.5 | sklearn 0.5
 ````
 
-<img src="../img/maed.png" />
+<img src="../../img/maed.png" />
 
 **MAPE - Mean Absolute Percentage Error - Erro Médio Percentual Absoluto**
 + Erro mais fácil de ser explicado, fica entre [0,1], quanto menor, melhor
 + É a média das porcentagens de erro
-+ No exemplo abaixo temos se o  de MAPE é 0.42, quer dizer que: **O modelo erra 42% em média** em mas nâo se sabe se é acima do valor ou abaixo do valor real.
++ No exemplo abaixo temos se o  de MAPE é 0.42, quer dizer que: **O modelo erra 42% em média** em mas não se sabe se é acima do valor ou abaixo do valor real.
 
 
 **R² or Coefficient of Determination | **Coeficiente de Determinação** $ R^2 $. **
-+ [Porque o R2 é inútil](https://data.library.virginia.edu/is-r-squared-useless/)
++ [Porque o R² é inútil](https://data.library.virginia.edu/is-r-squared-useless/)
 + Basicamente, este coeficiente R² indica quanto o modelo foi capaz de explicar os dados coletados. O R² varia entre 0 e 1, indicando, em percentagem, o quanto o modelo consegue explicar os valores observados. Quanto maior o R², mais explicativo é o modelo, melhor ele se ajusta à amostra.
 + Por exemplo, se o R² de um modelo é 0,8234, isto significa que 82,34% da variável dependente consegue ser explicada pelos regressores presentes no modelo.
 + O R² deve ser usado com precaução, pois é sempre possível torná-lo maior pela adição de um número suficiente de termos ao modelo. Assim, se, por exemplo, não há dados repetidos (mais do que um valor `y` para um mesmo `x` ) um polinômio de grau `n - 1` dará um ajuste perfeito R² = 1 para n  dados. Quando há valores repetidos, o R² não será nunca igual a 1, pois o modelo não poderá explicar a variabilidade devido ao erro puro.
 r. 
 
-
-
 ### O que é Regularização?
 
 Técnica para tratar do problema de overfitting (quando o modelo se adapta demais aos dados de treinamento) ou de underfitting (quando não consegue se ajustar aos dados).
 
-<img src="../img/overffiting-underfiting.png" />
+<img src="../../img/overffiting-underfiting.png" />
 
 A regularização coloca mais informação para dar penalidade aos dados que trariam a condição de overfitting/underfitting.
 
@@ -255,11 +196,11 @@ Ele ajuda a reduzir a complexidade do modelo e assim fazer melhores previsões.
 Regularização L1 (regularização Lasso) - Adiciona a soma dos valores absolutos dos coeficientes à função de custo.
 Regularização L2 (regularização Ridge) - Adiciona a soma dos quadrados dos coeficientes à função de custo.
 
-Há outro que são: AIC/BIC, Ridge, Lasso, Basis pursuit denoising, Rudin–Osher–Fatemi model (TV), Potts model, RLAD, Dantzig Selector,SLOPE
+Há outro que são: AIC/BIC, Ridge, Lasso, Basis pursuit denoising, Rudin–Osher–Fatemi model (TV), Potts model, RLAD, Dantzig Selector, SLOPE
 
 ### Podemos usar a regularização L1 para a seleção de features?
 
-Sim, porque a natureza da regularização L1 (Lasso) levará a coeficientes com pouco valor à zero
+Sim, porque a natureza da regularização L1 (Lasso) levará a coeficientes com pouco valor de importância à zero, podendo a sim ser eliminado do modelo.
 
 Exemplo de Lasso
 https://towardsdatascience.com/feature-selection-using-regularisation-a3678b71e499
@@ -305,27 +246,27 @@ A regularização torna-se necessária quando o modelo começa a adequar demais 
 [sklearn - cross validation](https://scikit-learn.org/stable/modules/cross_validation.html)
 
 <div style="text-align: center;">
-	<img src="../img/holdout-strategy.jpg" />	
+	<img src="../../img/holdout-strategy.jpg" />	
 </div>
 
 Pros of the hold-out strategy: Fully independent data; only needs to be run once so has lower computational costs.
 
 Cons of the hold-out strategy: Performance evaluation is subject to higher variance given the smaller size of the data.
 
-**Problema doldout**
+**Problema holdout**
 
-AO dividir em train/test, podemos cair no seguinte erro. Tunar os parâmetros para que obtenham o menor erro na base de teste. Perceba que a tunagem está diretamente ligada a essa base de test criando assim um overfiting (nâo consegue generalizar os dados).
+AO dividir em train/test, podemos cair no seguinte erro. Tunar os parâmetros para que obtenham o menor erro na base de teste. Perceba que a tunagem está diretamente ligada a essa base de test criando assim um overfiting (não consegue generalizar os dados).
 
-Uma forma de evitar isso é fazer mais uma divisão da base, em uma de validaçâo (`validation`).
+Uma forma de evitar isso é fazer mais uma divisão da base, em uma de validação (`validation`).
 
-Essa é testada somente no final. Todo o ajuste de erro é feito olhando para a de test e não apra essa nova.
+Essa é testada somente no final. Todo o ajuste de erro é feito olhando para a de test e não para essa nova.
 
 
 ---
 
-Prém vai acontecer o seguinte problea: dividir em 3 a base vai ter poucos dados para fazer o train/test/validate. 
+Porém vai acontecer o seguinte problema: dividir em 3 a base vai ter poucos dados para fazer o train/test/validate. 
 
-Entâo, utilizamos cross-validation (apelido : CV) para fazer um treinamento otimizado com essa base menor, além de resolver outro problemas.
+Então, utilizamos cross-validation (apelido : CV) para fazer um treinamento otimizado com essa base menor, além de resolver outro problemas.
 
 CV é uma técnica: em ter esse 3 datasets: train/test/final_validation e pode ser feito de várias formas
 
@@ -340,11 +281,11 @@ Pros of the K-fold strategy: Prone to less variation because it uses the entire 
 Cons of the K-fold strategy: Higher computational costs; the model needs to be trained K times at the validation step (plus one more at the test step).
 
 <div style="text-align: center;">
-	<img src="../img/validation-04.png" />	
+	<img src="../../img/validation-04.png" />	
 </div>
 
 <div style="text-align: center;">
-	<img src="../img/kfold-strategy.jpg" />	
+	<img src="../../img/kfold-strategy.jpg" />	
 </div>
 
 ### Como avaliar modelos de ML, para classificação e regressão?
@@ -393,7 +334,7 @@ Onde:
 + FN (False Negative) | Falso Negativo : A Classe é 0 e Previu 1 (O modelo errou) (erro tipo 2)
 + TN (True Negative)  | Verdadeiro Negativo : A Classe é 0 e Previu 0 (O modelo Acertou)
 
-<img src="../img/metricas-erros-02.png" />
+<img src="../../img/metricas-erros-02.png" />
 
 #### Erro Tipo 1 e tipo 2
 
@@ -406,7 +347,7 @@ Onde:
 + Erro Tipo 2 = FN/(FN + TN)
 
 <div style="text-align: center;">
-	<img src="../img/metricas-erros-03.jpg" style="width: 70%; align-content: center" />	
+	<img src="../../img/metricas-erros-03.jpg" style="width: 70%; align-content: center" />	
 </div>
 
 **Acurácia / Accuracy**
@@ -418,7 +359,7 @@ Acurácia é a porcentagem total dos itens classificados **corretamente**
 A pergunta que a acurácia responde é a seguinte: no geral, o quão frequente o classificador está correto?
 
 <div style="text-align: center;">
-	<img src="../img/metricas-erros-03.png" />
+	<img src="../../img/metricas-erros-03.png" />
 </div>
 
 Porém, em um dataset desbalanceado ela não será uma métrica tão boa.
@@ -427,12 +368,12 @@ Porém, em um dataset desbalanceado ela não será uma métrica tão boa.
 
 A Acurrácia não é uma boa métrica  quando há o dataSet está desbalanceado na quantidade de registros por classe. Por exemplo, na classificação binária com 95% da classe A e 5% da classe B, a precisão da previsão pode ser de 95%. Em datasets desbalanceados, precisamos escolher Precisão, Recall ou F1 Score, dependendo do problema que estamos tentando resolver.
 
-- Definiçâo de Acurácia: **Porcentagme de acerto do modelo**
+- Definição de Acurácia: **Porcentagem de acerto do modelo**
 - não use "oficialmente" (como métrica final a apresentar), apenas "preguiçosamente", há coisas muito melhores
 - inadequada para dados desequilibrados, pode te enganar
-- Exemplo: Imagine que você vai fazer um detector de spam. Na sua caixa de email hoje, cerca de 98% dos seus emails nâo são span. Por causa disso, se você simplismente atribuir todos os emails como não-spam, você consegue uma acurácia monstruosa de 98% sem ser capaz de detectar um único spam. Isso acaontece porque a qtd de spam é extremamente baixa em realaçâo a qtd de não-spam, ou seja, seu dataset está desbalanceado.
+- Exemplo: Imagine que você vai fazer um detector de spam. Na sua caixa de emails hoje, cerca de 98% dos seus emails não são spam. Por causa disso, se você simplesmente atribuir todos os emails como não-spam, você consegue uma acurácia monstruosa de 98% sem ser capaz de detectar um único spam. Isso acontece porque a quantidade de spam é extremamente baixa em realação a quantidade de não-spam, ou seja, seu dataset está desbalanceado.
 
-<img src="../img/metricas-erros-04.png" />
+<img src="../../img/metricas-erros-04.png" />
 
 #### Precisão, Precision
 
@@ -440,7 +381,7 @@ A Acurrácia não é uma boa métrica  quando há o dataSet está desbalanceado 
 
 Precisão = TP / (TP + FP)
 <div style="text-align: center;">
-<img src="../img/metricas-erros-06.png" />
+<img src="../../img/metricas-erros-06.png" />
 </div>
 
 Trabalha com o Erro do tipo 1 (Falso Positivo): pega a vertical de TP com FP
@@ -449,7 +390,7 @@ TP FN
 FP TN
 
 Se digo que pertence a classe X, qual a certeza de está certo (qua bem acerto registro de classe X quando afirma que é da classe X)
-+ Pega no pé de dizer que pertence a essa classe quano na verdade nao pertence (erro tipo1)
++ Pega no pé de dizer que pertence a essa classe quano na verdade não pertence (erro tipo 1)
 
 - Definição de Precisão: **Dos casos que eu previ como positivos (para uma classe) quantos realmente são?**
   - daqueles que classifiquei como corretos, quantos efetivamente eram?
@@ -463,12 +404,8 @@ Taxa de itens positivos a uma classe, que fora classificados como positivo pelo 
 
 Recall = TP / (TP + FN)
 
-<!--
-The recall is alternatively called a true positive rate. It refers to the number of positives that have been claimed by your model compared to the number of positives that are available throughout the data.
--->
-
 <div style="text-align: center;">
-	<img src="../img/metricas-erros-05.png" />
+	<img src="../../img/metricas-erros-05.png" />
 </div>
 
 Trabalha com o **Erro Tipo 2 / Taxa de Falso Negativo | False Negative Rate**: 
@@ -486,13 +423,13 @@ Para os registros, quao bem diferencia se eles pertencem ou não a essa classe
   - Ex: se meu recall é de 98% para a classe 1, significa que,
 - Chamado de taxa de detecção
 
-#### Especificidade, Seletividade Specifity, TNR (True Negative Rate)
+#### Especificidade, Seletividade, TNR (True Negative Rate)
 
 Taxa de itens previstos como não pertencente a classe do total desses itens negativos a essa classe.
 
 Especificidade = TN/ ( TN + FP)
 <div style="text-align: center;">
-<img src="../img/metricas-erros-08.png" />
+<img src="../../img/metricas-erros-08.png" />
 </div>
 
 #### F1 Score
@@ -506,7 +443,7 @@ A média harmônica captura quando a quantidade de registros de uma classe é ma
 Exemplo:
 
 <div style="text-align: center;">
-<img src="../img/metricas-erros-11.png" />
+<img src="../../img/metricas-erros-11.png" />
 </div>
 
 #### Matrix de confusão em scikit-learnig
@@ -515,11 +452,11 @@ Exemplo: Para um dataSet com dados de um possível cliente para comprar ou não 
 
 ````python
 from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
-precisao = accuracy_score(y_test, y_pred)
+precisão = accuracy_score(y_test, y_pred)
 matriz = confusion_matrix(y_test, y_pred)
-print("Accuracy\n", precisao, "\n")
-print("Matrix de Confusao\n",matriz, "\n")
-print("Matrix de Confusao Porcentagem\n",matriz/matriz.sum(), "\n")
+print("Accuracy\n", precisão, "\n")
+print("Matrix de Confusão\n",matriz, "\n")
+print("Matrix de Confusão Porcentagem\n",matriz/matriz.sum(), "\n")
 print(classification_report(y_test,y_pred, target_names=['Not Purchased', 'Purchased']))
 ````
 Gerando
@@ -543,10 +480,10 @@ Not Purchased       0.96      0.96      0.96        68
 
      accuracy                           0.94       100
 
-Avaliando a classificacao para cada classe:
+# Avaliando a classificação para cada classe:
 + Precision: Numero total de positivos do total dos classificados como positivos para uma classe
 + Recall: Numero de Positivos que foram devidamente identificados para uma classe
-+ F1-Score: Media Harmonica entre precisao e recall
++ F1-Score: Media Harmonica entre precisão e recall
 + Support: Quantidade de amostras de uma classe
 
 Avaliacao geral
@@ -564,7 +501,7 @@ Avaliacao geral
   - Ele pode ser negativo
 
 ````python
- from sklearn.metrics import cohen_kappa_score
+from sklearn.metrics import cohen_kappa_score
 
 print("P = {}\nY = {}".format(p_multi_argmax, y_multi))
 # P = [2 1 0 1 2 1 2 0 0 1]
@@ -577,7 +514,7 @@ cohen_kappa_score(y_multi, p_multi_argmax)
 + **INDEPENDE DO Threshdold/pnto de corte**
 - calculada para a probabilidade empírica do evento. Proporção que o evento ocorre na vida real
 - Se o time A jogar contra o time B e tiver 40% de chances de ganhar, se jogarem 10 vezes, 4 vezes o time A vai ganhar.
-- Se tivermos um modelo para prever isso, entâão, A log loss estará na mínima quando o modelo prever 0.4
+- Se tivermos um modelo para prever isso, então, A log loss estará na mínima quando o modelo prever 0.4
 - Ou seja, nosso modleo atingir 0.4 significa que está ótimo
 
 **Se um evento no mundo real tem uma probabilidade limitada de acontecer, então nosso modelo também deverá ter essa mesma probabilidade na log loss se for perfeito**
@@ -607,12 +544,12 @@ log_loss(y_binary, p_binary)
 # Y = [0 0 0 1 1 1 0 1 1 0]
 # 0.456820673923256
 
-# Previsâo aleartória
+# Previsão aleartória
 p_random = np.ones(10) * 0.5
 log_loss(y_binary, p_random)
 # 0.6931471805599453
 
-# Para uma previsâo binária, seu modelo deve estár abaixo de 0.69
+# Para uma previsão binária, seu modelo deve estár abaixo de 0.69
 ````
 
 ### Curva ROC e AUC ROC
@@ -629,7 +566,7 @@ A curva ROC representa uma relação entre sensibilidade (RECALL - ) e especific
 + FPR (false Positve Rate - Taxa de Falso Positivo) que é calculado como `1 - ` **Especificidade** [0,1]
 
 
-<img src="../img/img-roc-auc-cap-04.png"  />
+<img src="../../img/img-roc-auc-cap-04.png"  />
 
 #### O que é ROC AUC, quando usar e como interpretar?
 
@@ -646,19 +583,19 @@ Quanto maior o valor do AUC melhor será o modelo.
 A seguir á alguns exemplos de gráficos ROC e valores AUC para entender a correlação entre eles
 
 <div style="text-align: center;">
-<img src="../img/img-roc-auc-cap-03.png" style="width: 60%" />
+<img src="../../img/img-roc-auc-cap-03.png" style="width: 60%" />
 </div>
 Exemplo de várias ROC
 
 <div style="text-align: center;">
-<img src="../img/img-roc-auc-cap-07.png"  />
+<img src="../../img/img-roc-auc-cap-07.png"  />
 </div>
 
 **outra interpretação**
 
 - Interpretar ROC-AUC: **Qual é a chance de um exemplo positivo ter um score (previsão) maior do que um negativo?**
 - bom quando garantir que positivos sejam rankeados acima dos negativos é mais importante do que prever a probabilidade real do evento
-  + Exemplo do Spam: Diferente da log loss,eu não me importa com a probabildiade (a certesa do modelo) em classificar se é span ou não (pois isso depende também no threshold). **Eu quero que o email que tenha mais cara de spam  mesmo seja devidamente classificado como span**
+  + Exemplo do Spam: Diferente da log loss,eu não me importa com a probabilidade (a certeza do modelo) em classificar se é spam ou não (pois isso depende também no threshold). **Eu quero que o email que tenha mais cara de spam  mesmo seja devidamente classificado como spam**
 
 + qual é a chance de um exemplo positivo ter um score (previsão) maior do que um negativo?
 + bom quando garantir que positivos sejam rankeados acima dos negativos é mais importante do que prever a probabilidade real do evento
@@ -666,17 +603,17 @@ Exemplo de várias ROC
 Experimento
 
 + Suponha que tenha duas caixas, uma com só exemplos positivos e outra com apenas exemplo negativas.
-+ Eu quero saber: vou tirar dessas caixas um exemplo positivo e um exemplo de negativo ver a probabildiades do meu modelo e devolver pra caixa (é uma coisa de probabilidade sem reposiçâo, possa pegar o mesmo mais de uma vez)
- - Olho a prob que meu modelo deu para esse exmeplo positivo
++ Eu quero saber: vou tirar dessas caixas um exemplo positivo e um exemplo de negativo ver a probabilidades do meu modelo e devolver pra caixa (é uma coisa de probabilidade sem reposição, possa pegar o mesmo mais de uma vez)
+ - Olho a prob que meu modelo deu para esse exemplo positivo
  - Olho a prob que meu modelo deu para o exemplo negativo
 
-Se a prob do positivo é maior que negativo, entaô, conto +1.
+Se a prob do positivo é maior que negativo, então, conto +1.
 
-A porcentagem de veze que o positov > negativo = AUC Score
+A porcentagem de veze que o positivo > negativo = AUC Score
 
 AUC SCORE = **qual é a chance de um exemplo positivo ter uma prob maior que o do negativo**
 
-É mais interressante quando eu quero saber que os positivos sejam mais identificáveis com certeza que os negativo (de certa forma um pouco relacionado com a Precision para os positivos).
+É mais interessante quando eu quero saber que os positivos sejam mais identificáveis com certeza que os negativo (de certa forma um pouco relacionado com a Precision para os positivos).
 
 ````python
 sum_over = 0
@@ -868,9 +805,9 @@ A Grid Search (pesquisa em grade)  é uma abordagem exaustiva, de modo que, para
 
 
 <div style="text-align: center;">
-<img src="../img/features-selection-01.png"  />
-<img src="../img/features-selection-02.png"  />
-<img src="../img/features-selection-03.png"  />
+<img src="../../img/features-selection-01.png"  />
+<img src="../../img/features-selection-02.png"  />
+<img src="../../img/features-selection-03.png"  />
 </div>
 
 + Numerical Variables
@@ -996,14 +933,14 @@ Try a range of different models fit on different subsets of features chosen via 
 ## Box Plot - Como interpretar
 
 <div style="text-align: center;">
-<img src="../img/boxplot-01.png"  />
-<img src="../img/boxplot-02.png"  />
-<img src="../img/boxplot-03.png"  />
+<img src="../../img/boxplot-01.png"  />
+<img src="../../img/boxplot-02.png"  />
+<img src="../../img/boxplot-03.png"  />
 </div>
 
 Trata de ver a extensão dos dados, o range junto com outra medidas.
 
-A reta que separa a caixa é a mediana (o valor que ficaria no meio da distribuiçâo se os dados forem ordenados). Isso quer dizer que, dado a mediadna, metade dos dados estao abaixo dela e a outra metade acima do valor da mediana
+A reta que separa a caixa é a mediana (o valor que ficaria no meio da distribuição se os dados forem ordenados). Isso quer dizer que, dado a mediadna, metade dos dados estao abaixo dela e a outra metade acima do valor da mediana
 
 Os limite da caixa: Representam outras medianas. Ou seja, o valor que esta no meio da parte de baixo e da parte de cima, 
 
@@ -1019,191 +956,15 @@ EXISTENCIA DE OUTILIERS:
 max_da_corda = Q3 + 1,5 (Intervalo Q1<->Q3)
 min_da_corda = Q1 - 1,5 (Intervalo Q1<->Q3)
 
-Assim: eu garanto que 99% das amostra estarao dentro desse boxplot, que na distribuiçâo normal é 6 sigma.
+Assim: eu garanto que 99% das amostra estarao dentro desse boxplot, que na distribuição normal é 6 sigma.
 
-Outilers: 
+outliers: 
 + podem ser eventos raros que realmente acontece em seu experiemnto
-  - MEsmo assim vc pode quere ele fora, já que sao raros e podem influenciar seu modelo
+  - MEsmo assim vc pode quere ele fora, já que são raros e podem influenciar seu modelo
 + Podem ser dados errados, e asism é melhor excluilos
 
-<!-- 
 
-## Dimensionality reduction
 
-### What is the curse of dimensionality? Why do we care about it? ‍⭐️
-
-Data in only one dimension is relatively tightly packed. Adding a dimension stretches the points across that dimension, pushing them further apart. Additional dimensions spread the data even further making high dimensional data extremely sparse. We care about it, because it is difficult to use machine learning in sparse spaces.
-
-### Do you know any dimensionality reduction techniques? ‍⭐️
-
-Singular Value Decomposition (SVD)
-Principal Component Analysis (PCA)
-Linear Discriminant Analysis (LDA)
-T-distributed Stochastic Neighbor Embedding (t-SNE)
-Autoencoders
-Fourier and Wavelet Transforms
-
-
-### What’s singular value decomposition? How is it typically used for machine learning? ‍⭐️
-
-Singular Value Decomposition (SVD) is a general matrix decomposition method that factors a matrix X into three matrices L (left singular values), Σ (diagonal matrix) and R^T (right singular values).
-For machine learning, Principal Component Analysis (PCA) is typically used. It is a special type of SVD where the singular values correspond to the eigenvectors and the values of the diagonal matrix are the squares of the eigenvalues. We use these features as they are statistically descriptive.
-Having calculated the eigenvectors and eigenvalues, we can use the Kaiser-Guttman criterion, a scree plot or the proportion of explained variance to determine the principal components (i.e. the final dimensionality) that are useful for dimensionality reduction.
-
-## O que é PCA?
-
-PCA Intuition
-What is the true purpose of PCA?
-The true purpose is mainly to decrease the complexity of the model. It is to simplify the model while keeping relevance and performance. Sometimes you can have datasets with hundreds of features so in that case you just want to extract much fewer independent variables that explain the most the variance.
-
-What is the difference between PCA and Factor Analysis?
-Principal component analysis involves extracting linear composites of observed variables. Factor analysis is based on a formal model predicting observed variables from theoretical latent factors. PCA is meant to maximize the total variance to look for distinguishable patterns, and Factor analysis looks to maximize the shared variance for latent constructs or variables.
-
-Should I apply PCA if my dataset has categorical variables?
-You could try PCA, but I would be really careful, because categorical values can have high variances by default and will usually be unstable to matrix inversion.
-
-Apply PCA and do cross validation to see if it can generalize better than the actual data. If it does, then PCA is good for your model. (Your training matrix is numerically stable). However, I am certain that in most cases, PCA does not work well in datasets that only contain categorical data. Vanilla PCA is designed based on capturing the covariance in continuous variables. There are other data reduction methods you can try to compress the data like multiple correspondence analysis and categorical PCA etc.
-
-What is the best extra resource on PCA?
-Check out this video that has an amazing explanation of PCA and studies it in more depth.
-
----
-
-Significa: "Análise de Componetnes principais"
-
-=> Para problemas linearmente separáveis
-
-=> Deve-se ser feito asobre dados numéricos
-
-**Diferenciar Seleçâo de Extração de características**
-
-• Seleção de características x Extração de características
-+ Seleção: Indicar os atributos mais importantes
-+ Extração: AO fazer uma análise, criar novos atributos. É como unir atributos.
-  - Encontrar relacionamentos entre os atributos para combinar eles e reduzir a dimensionalidade
-
-Lembre-se, o PCA nâo é escolher os melhore "n" atributos, e sim reduzir para "n" atributos
-
-**Características do PCA**
-
-• PCA: Identifica a correlação entre variáveis, e caso haja uma forte
-correlação é possível reduzir a dimensionalidade.
-  - Exemplo: Se vocÊ têm duas variáveis com forte correlação vocÊ pde então unilas e asism reduzir em 1 a quantidade de features.
-
-**Funcionamento**
-
-• Um dos principais algoritmos de aprendizagem de máquina não
-supervisionada (não há certo/errado apriori)
-• Das m variáveis independentes, PCA extrai p <= m novas variáveis
-independentes que explica melhor a variação na base de dados, sem
-considerar a variável dependente
-• O usuário pode escolher o número de p
-
-COMPONETSE PRICINCPAIS SÂO OS COMEPONETNE DE features concatenados.
-
-**Se com PCA fiacr pior?**
-
-Abaixou um pouco, mas, você deve avaliar o `trade_off` entre a precisao e a velocidade.
-
-Exemplo, será que mesmo reduzindo 1\% poderia ser melhor usar o PCA pois teria menos dados para classificar e assim ter menos custo computacional?
-
-````python
-
-pca.explained_variance_ratio_ Revela o quanto os componentes definem os dados, a importância deles.
-
-Inicialmente, deve-se colocar PCA(n_components = None) para descobrir a variance_ratio para cada feature. Depois disos, escolher um número menor que len(features) cuja soma seja alta.
-
-Um exemplo, prático. Calcular o PCA para 30 feautures e descobrir que, 3 features tem a soma de variance_ratio de 0.80. Ou seja, somente 3 variáveis já seriam necessário para contextualizar sua base com 80% de veracidade.
-
-componentes = pca.explained_variance_ratio_
-componentes
-executed in 17ms, finished 16:07:54 2020-01-07
-array([0.151561  , 0.10109701, 0.08980379, 0.08076277, 0.07627678,
-       0.07357646])
-componentes.sum()
-executed in 31ms, finished 16:42:58 2020-01-07
-0.5730778058904467
-
-````
-## LDA
-
-**Questions LDA - English ML-AZ**
-LDA Intuition
-Could you please explain in a more simpler way the difference between PCA and LDA?
-A simple way of viewing the difference between PCA and LDA is that PCA treats the entire data set as a whole while LDA attempts to model the differences between classes within the data. Also, PCA extracts some components that explain the most the variance, while LDA extracts some components that maximize class separability.
-
-Feature Selection or Feature Extraction?
-You would rather choose feature selection if you want to keep all the interpretation of your problem, your dataset and your model results. But if you don’t care about the interpretation and only car about getting accurate predictions, then you can try both, separately or together, and compare the performance results. So yes feature selection and feature extraction can be applied simultaneously in a given problem.
-
-Can we use LDA for Regression?
-LDA is Linear Discriminant Analysis. It is a generalization of Fisher’s linear discriminant, a method used in statistics, pattern recognition and machine learning to find a linear combination of features that characterizes or separates two or more classes of objects or events. The resulting combination may be used as a linear classifier, or, more commonly, for dimensionality reduction before later classification. However, for regression, we have to use ANOVA, a variation of LDA. LDA is also closely related to principal component analysis (PCA) and factor analysis in that they both look for linear combinations of variables which best explain the data. LDA explicitly attempts to model the difference between the classes of data. PCA on the other hand does not take into account any difference in class, and factor analysis builds the feature combinations based on differences rather than similarities. Discriminant analysis is also different from factor analysis in that it is not an interdependence technique: a distinction between independent variables and dependent variables (also called criterion variables) must be made. LDA works when the measurements made on independent variables for each observation are continuous quantities. When dealing with categorical independent variables, the equivalent technique is discriminant correspondence analysis.
-
-LDA in Python
-Which independent variables are found after applying LDA?
-The two independent variables that you see, indexed by 0 and 1, are new independent variables that are not among your 12 original independent variables. These are totally new independent variables that were extracted through LDA, and that’s why we call LDA Feature Extraction, as opposed to Feature Selection where you keep some of your original independent variables.
-
-How to decide the LDA n_component parameter in order to find the most accurate result?
-You can run:
-
-LDA(n\_components = None
-and it should give you automatically the ideal n_components.
-
-How can I get the two Linear Discriminants LD1 and LD2 in Python?
-You can get them by running the following line of code:
-
-lda.scalings_
-
----
-
-**LDA (Linear Discriminant Analysis)**
-
-Possui mesma função do PCA mas envolve a classe dos dados, ou seja, é um algortimo supervisionado.
-
-=> Para problemas linearmente separáveis
-
-• Além de encontrar os componentes principais, LDA também encontra os eixos que maximizam a separação entre múltiplas classes
-
-• É um algoritmo supervisionado por causa da relação que tem com as classes
-
-• Das m variáveis independentes, LDA extrai p <= m novas variáveis independentes que mais separam as classes da variável dependente
-
--->
-
-## Reduçâo de Dimensionliade PCA, LDA, T-sne e etc..
-
-A reduçâo de dimensionalidade pode ser uma boa técninaca visual para provar que os dados de classes diferentes são passíveis de serem separavies, ou seja, aplicando uma tecnica de reduçâo e em seguida mostrando clusters em graficos, se você consegue separar os dadso de cada classe, entoa, a classificaçâo deverá ser possível
-
-### t-sen original
-
-t-sne (se fala ti-isni) é uma técninca para reduzir a dimensionaldiade preservando a separaçâo de clusters
-
-### t-sne
-
-https://www.analyticsvidhya.com/blog/2017/01/t-sne-implementation-r-python/
-https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding
-https://towardsdatascience.com/an-introduction-to-t-sne-with-python-example-5a3a293108d1
-https://www.datacamp.com/community/tutorials/introduction-t-sne?utm_source=adwords_ppc&utm_campaignid=1455363063&utm_adgroupid=65083631748&utm_device=c&utm_keyword=&utm_matchtype=b&utm_network=g&utm_adpostion=&utm_creative=332602034358&utm_targetid=aud-299261629574:dsa-429603003980&utm_loc_interest_ms=&utm_loc_physical_ms=1001520&gclid=CjwKCAjw1K75BRAEEiwAd41h1PJ-mOJFa1k75ThPZd7d6BjS6itByrtS4fM95X_8-atp4MYPq_63khoCE1IQAvD_BwE
-
-Para entender esse algoritmo, você precisa entender os seguintes termos:
-+ Distância euclidiana
-+ Probabilidade Condicional
-+ Gráficos normais e de distribuição T
-
-https://www.youtube.com/watch?v=NEaUSP4YerM
-
-O algoritmo t-SNE pode agrupar com precisão os casos de fraude e não fraude em nosso conjunto de dados.
-Embora a subamostra seja bastante pequena, o algoritmo t-SNE é capaz de detectar clusters com muita precisão em todos os cenários (embaralhe o conjunto de dados antes de executar o t-SNE)
-Isso nos dá uma indicação de que outros modelos preditivos terão um bom desempenho na separação de casos de fraude de casos não fraudulentos.
-
----
-
-t-Distributed Stochastic Neighbour Embedding2 (t-SNE, pronunciado tí-ciní) é uma técnica de visualização em 1D, 2D ou 3D de datasets de altas dimensões.
-
-O t-SNE, desenvolvido por Laurens van der Maaten e Geoffrey Hinton, é um refinamento do SNE e se diferencia deste, principalmente, pela utilização de distribuição t de Student para representar os dados em baixas dimensões (ou dados mapeados).
-
-O t-SNE utiliza um kernel gaussiano para converter pontos em altas dimensões para probabilidades de conexões (P) e um kernel t-Student, com um grau de liberdade, para representar as probabilidades de conexões entre os pontos em baixas dimensões (Q), no espaço mapeado. O custo das diferenças entre as duas distribuições P e Q é modelado pela divergência de Kullbach-Leibler20, o gradiente desta função (ver [Equação 5] abaixo) é utilizado para atualizar o mapa de pontos em baixas dimensões.
-
-O t-SNE não tem garantia de convergir mas produz resultados muito bons, como por exemplo, o mapeamento das 784 dimensões do MNIST para apenas duas (ou tres, se contarmos os canais cores e marcas - que representam a mesma informação), como mostrada no gráfico abaixo, implementado com Tensorflow.js17
 
 
 ---
@@ -1228,11 +989,11 @@ Normalizar (Normalize) : L1 e L2
 **`MinMaxScaler`**
 
 <div style="text-align: center;">
-<img src="../img/min-max-scale.png" />
+<img src="../../img/min-max-scale.png" />
 </div>
 
 + Preserva a forma da distribuição
-+ Não reduz a importância dos outiliers
++ Não reduz a importância dos outliers
 + Em geral a *range* fica entre \[0,1\]
 
 O MinMaxScaler é um bom escalador para começar, a menos que você 
@@ -1241,7 +1002,7 @@ saiba que sua feature seja uma distribuição normal ou que os outliers tenham i
 **`RobustScaler`**
 
 <div style="text-align: center;">
-<img src="../img/robust-scale.png" />
+<img src="../../img/robust-scale.png" />
 </div>
 
 transforma o vetor de recurso subtraindo a mediana e depois dividindo pelo intervalo interquartil (valor de 75% - valor de 25%).
@@ -1251,7 +1012,7 @@ Use RobustScaler se você deseja reduzir os efeitos de valores discrepantes, em 
 **`StandardScaler`**
 
 <div style="text-align: center;">
-<img src="../img/standard-scale.png" />
+<img src="../../img/standard-scale.png" />
 </div>
 
 + Para distribuições normais
@@ -1260,12 +1021,12 @@ Use RobustScaler se você deseja reduzir os efeitos de valores discrepantes, em 
 **`Normalizer`**
 
 <div style="text-align: center;">
-<img src="../img/normalizer-scale.png" />
+<img src="../../img/normalizer-scale.png" />
 </div>
 
 + Trabalha sobre as linhas, não as colunas
-+ As normalizaçôes L1 e L2 aplicam uma penalizaçâo as linhas
-+ Tranfroam entre 1 e -1
++ As normalizações L1 e L2 aplicam uma penalização as linhas
++ Transformam entre 1 e -1
 
 **Resumo**
 
@@ -1276,27 +1037,27 @@ Use RobustScaler se você deseja reduzir os efeitos de valores discrepantes, em 
 + Use o Normalizador com moderação - normaliza as linhas de amostra, não as colunas de recursos. Pode usar a normalização l2 ou l1.
 
 <div style="text-align: center;">
-<img src="../img/compare-scales.png" />
+<img src="../../img/compare-scales.png" />
 </div>
 
 <div style="text-align: center;">
-<img src="../img/scales.png" />
+<img src="../../img/scales.png" />
 </div>
 
 
 ## Add
 
-+ + Tratar outilers no y de regresssâo: winsorizar
++ + Tratar outliers no y de regresssão: winsorizar
 + Se precizar de GPU para coisas extermamente seriesas, pode-se pensar em alugar a AWS que tem GPU pra essas coisas.
 + É sempre usar métricas de acordo com o negócio que está resolvendo: 
   - Em geral selecione uma primaria de acordo com o problema
-   - Dpeois escolheas outra para ter mais ângulos de observação
+   - Depois escolheas outra para ter mais ângulos de observação
 
    => Uma ideia interressante seria fazer um modelo focado em recall primiero e depois outro apra precision
 
-==> recall x precision: se detectar positivos/negativos for mais importante que acertar positivos/negativos, entâo recall é m ais imporatnte
+==> recall x precision: se detectar positivos/negativos for mais importante que acertar positivos/negativos, então recall é m ais importante
 
-==> Se nâo há ponto de corte e dados desbalanceados: AUC e PRC 
+==> Se não há ponto de corte e dados desbalanceados: AUC e PRC 
 
 ==> Como saber se ocorreu ovefiting: 
 + Em geral é quando score de testes está diferente do score de treinamento
@@ -1304,7 +1065,7 @@ Use RobustScaler se você deseja reduzir os efeitos de valores discrepantes, em 
 + Quando fazer feature selection:
   - Quando houver muitas features com um dataset pequeno
   - Usa-se o valor p (pearson) para encontrar a correlação entre x e y
-  - As vezes, em vez de fazer feature selection, para regressão, pode ser necesśario fazer Lasso//Ridge
+  - As vezes, em vez de fazer feature selection, para regressão, pode ser necessário fazer Lasso//Ridge
 
   HUGE GLOSSARY
 
@@ -1316,122 +1077,6 @@ Use RobustScaler se você deseja reduzir os efeitos de valores discrepantes, em 
 
   Lista de distribuiçôes possíveis
 
-## DataSet Desbalanceado para CLassificaçâo
-
-link: 
-
-+ https://medium.com/data-hackers/como-lidar-com-dados-desbalanceados-em-problemas-de-classifica%C3%A7%C3%A3o-17c4d4357ef9
-
-+ https://machinelearningmastery.com/combine-oversampling-and-undersampling-for-imbalanced-classification/
-
-Imagine você ter a tareda de dado um email, verificar quais são ou são SPAM. O problema é possívelmente ocorreria é que para uma pessoa normal, a quantidade de emails SPAM é muito pequena, tipo 1%. Então para um dataset de 1000 registros de emails teriamos apenas 10 como sendo SPAM. Essa diferença, esse desbalanceamento muda a forma de avaliarmos os nossos modelos, pois poderiamos classificar 99% como Nâo SPAM e teriamos um modelo de Acurracy de 99%, o que pareceria um modelo percefeito mas na verdade incapaz de fazer a tarefa. 
-
-**Avaliar modelos para datasets desbalanceado**
-
-Por isso, avaliar precision/recall/f1-score das classes se torna imporante. Um boa métrica de avaliaçâo para um modelo desbalanceado seria a média de f1-score das classes, pois assim saberiamos se o modelo consegue classificar bem mesmo para um subconjunto nao pequeno de dados (no caso a classe de SPAM).
-
-**Como treinar sobe um dataset desbalanceado**
-
-Como já deve ter percebido, essa difereça causa um grande impacto sobre no treinmento, já que havera poucos dados para o nosso modelo aprender o padrao de uma classe. ENtão a soluçâo é alterar: **Alterar o dataset na hora do treinamento da rede, para que o dataset se torne balanceado**.
-
-No exmeplo do SPAM há duas abordagem para que o dataset fique balanceado
-
-+ **UnderSampling**: Retirar rows de linhas Nao SPAM Para que tenha a mesma quantidade que NÃO SPAM.
-+ **OverSampling**: Criar rows SPAM para que fique com mesma quantidade de rows que NÃO SPAM.
-
-<div style="text-align: center;">
-<img src="../img/over-under-sampling.png" />
-</div>
-
-Para ambos há várias técnicas.
-
-Para saber mais detalhes sobre as técnicas há a lib que trata essa questão de balacneamento e desbalanceamento
-
-````
-$ sudo pip install imbalanced-learn
-# 
-````
-
-````
-
-# check version number
-import imblearn
-print(imblearn.__version__)
-
-````
-
-### UnderSampling
-
-+ Random UnderSampling: A técnica mais simples, tirar row aleartórias para que ambas as clases tenha mesma quantidade de row no dataset.
-
-+ NeighbourhoodCleaningRule: Aplica o algoritmo dos vizinhos próximos e remove as observações que não se enquadram. A cada iteração é aumentado a quantidade de vizinhos próximos no modelo.
-
-+ AllKNN: Foca em limpar os dados e não condensá-los.
-
-
-### OverSampling 
-
-+ Random Oversampling: Randomly duplicate examples in the minority class.
-
-+ SMOTE: Primeiro passo é encontrar os vizinhos próximos para as classes em minoria para cada amostra das classificações. Em seguida, traça uma reta entre o ponto original e o vizinho para definir a localização da observação da observação genérica.
-
-### ReSampling
-
-Seria aplciar UnderSampling na clase que tem mais e overSampling na classe que tem menos.
-
-Duas técnicas de under sampling (TomekLinks e nearest-neighbours) combinadas com SMOTE para obter uma amostra mais limpa e com as classificações bem balanceadas. Essa combinação resulta em dois modelos de over e under sampling chamadas SMOTETomek e SMOTEENN por exemplo.
-
-### Como proceder
-
-Pode-se buscar testas várias combinações de under e over sampling das mais diversas técnicas para buscar a que melhor der resultado.
-
-Exemplo de instâncias de `imblearn` para fazer esse  *sampling*
-
-link: https://machinelearningmastery.com/combine-oversampling-and-undersampling-for-imbalanced-classification/
-
-[Paper Academico - A Study of the Behavior of Several Methods for Balancing Machine Learning Training Data](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.58.7757&rep=rep1&type=pdf)
-
->  Our results show that the
-over-sampling methods in general, and Smote + Tomek and
-Smote + ENN (two of the methods proposed in this work) in
-particular for data sets with few positive (minority) examples, provided very good results in practice. Moreover, Random over-sampling, frequently considered an unprosperous
-method provided competitive results with the more complex
-methods. As a general recommendation, Smote + Tomek or
-Smote + ENN might be applied to data sets with a small
-number of positive instances, a condition that is likely to
-lead to classification performance problems for imbalanced
-data sets. For data sets with larger number of positive examples, the Random over-sampling method which is computationally less expensive than other methods would produce
-meaningful results
-
-
-
-````python
-from imblearn.under_sampling import RandomUnderSampler, TomekLinks
-from imblearn.over_sampling import RandomOverSampler, SMOTE
-from imblearn.combine import SMOTEENN, SMOTETomek
-
-# Exemplos de ReSmalping
-
-from collections import Counter
-print('Resampled dataset shape %s' % Counter(y_res))
-# SHOW: Resampled dataset shape Counter({0: 900, 1: 881})
-
-# Random OverSamlping + Random UnderSampling
-over = RandomOverSampler(sampling_strategy=0.1)
-under = RandomUnderSampler(sampling_strategy=0.5)
-
-# SMOTE OverSamlping + Random UnderSampling
-over = SMOTE(sampling_strategy=0.1)
-under = RandomUnderSampler(sampling_strategy=0.5)
-
-# SMOTE OverSamlping + Tomek UnderSampling
-resample = SMOTETomek(tomek=TomekLinks(sampling_strategy='majority'))
-
-# SMOTE OverSamlping + ENN UnderSampling
-resample = SMOTEENN()
-
-
-````
 
 -------
 -------
@@ -1439,7 +1084,6 @@ resample = SMOTEENN()
 
 Reler e colocar tudo aqui
 
-https://towardsdatascience.com/20-popular-machine-learning-metrics-part-1-classification-regression-evaluation-metrics-1ca3e282a2ce
 
 https://towardsdatascience.com/your-ultimate-data-science-statistics-mathematics-cheat-sheet-d688a48ad3db
 
@@ -1449,7 +1093,6 @@ https://towardsdatascience.com/your-ultimate-data-mining-machine-learning-cheat-
 
 https://towardsdatascience.com/your-ultimate-python-visualization-cheat-sheet-663318470db
 
-https://towardsdatascience.com/20-popular-machine-learning-metrics-part-1-classification-regression-evaluation-metrics-1ca3e282a2ce
 
 -------
 -------
@@ -1458,7 +1101,7 @@ https://towardsdatascience.com/20-popular-machine-learning-metrics-part-1-classi
 ## Hyper Params TUNING
 
 
-LInk muito bom com descriçâo dos chyperparametros de alguns modelos
+LInk muito bom com descrição dos hyperparâmetros de alguns modelos
 
 https://towardsdatascience.com/hyper-parameter-tuning-and-model-selection-like-a-movie-star-a884b8ee8d68
 
@@ -1467,7 +1110,7 @@ https://towardsdatascience.com/hyper-parameter-tuning-and-model-selection-like-a
 -------
 ---------
 
-## Tips Pytho
+## Tips Python
 
 https://medium.com/towards-artificial-intelligence/50-python-3-tips-tricks-e5dbe05212d7
 
@@ -1486,4 +1129,15 @@ https://scikit-learn.org/stable/tutorial/machine_learning_map/
 DISSECAR ESSE ARTIGO
 
 https://medium.com/data-hackers/como-selecionar-as-melhores-features-para-seu-modelo-de-machine-learning-faf74e357913
+
+
+-----
+-----
+-----
+-------
+
+### Why Use CV
+
+The technique of cross validation (CV) is best explained by example using the most common method, K-Fold CV. When we approach a machine learning problem, we make sure to split our data into a training and a testing set. In K-Fold CV, we further split our training set into K number of subsets, called folds. We then iteratively fit the model K times, each time training the data on K-1 of the folds and evaluating on the Kth fold (called the validation data). As an example, consider fitting a model with K = 5. The first iteration we train on the first four folds and evaluate on the fifth. The second time we train on the first, second, third, and fifth fold and evaluate on the fourth. We repeat this procedure 3 more times, each time evaluating on a different fold. At the very end of training, we average the performance on each of the folds to come up with final validation metrics for the model.
+
 

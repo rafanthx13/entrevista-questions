@@ -8,8 +8,8 @@
 ## Links para outras páginas
 
 + data-science
-  - [data-science-br](./data-science/data-science-br.html)
-  - [neural-network-br](./data-science/neural-network-br.html)
-  - [python-br](./data-science/python-br.html)
+  - [data-science-br](./data-science/br/data-science.html)
+  - [neural-network-br](./data-science/br/neural-network-br.html)
+  - [python-br](./data-science/br/python-br.html)
 
 <h2 align="center">Feito por 🚀<a href="https://rafanthx13.github.io/">Rafael Morais de Assis</a></h2>
