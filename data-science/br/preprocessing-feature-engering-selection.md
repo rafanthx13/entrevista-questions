@@ -154,3 +154,105 @@ Exemplo, será que mesmo reduzindo 1\% poderia ser melhor usar o PCA pois teria 
 ### Qual é a maldição da dimensionalidade? Por que nos preocupamos com isso? ‍
 
 Os dados em apenas uma dimensão são compactados de maneira relativamente compacta. Adicionar uma dimensão alonga os pontos dessa dimensão, afastando-os ainda mais. Dimensões adicionais espalham os dados ainda mais, tornando os dados de alta dimensão extremamente esparsos. Nós nos preocupamos com isso, porque é difícil usar o aprendizado de máquina em espaços escassos.
+
+
+## Dimensionar (Scale), padronizar (Standardize) or normalizar (Normalize)
+
+link: https://towardsdatascience.com/scale-standardize-or-normalize-with-scikit-learn-6ccc7d176a02
+
+MinMaxScaler, RobustScaler, StandardScaler, and Normalizer are scikit-learn methods to preprocess data for machine learning.
+
+Escala (Scale) : Alterar intervalo de valores sem mudar a distribuição
++ Geralmente significa alterar o intervalo dos valores. O formato da distribuição não muda. Pense em como um modelo em escala de um edifício tem as mesmas proporções que o original, apenas menor. É por isso que dizemos que é re-desenhado em escala. O intervalo geralmente é definido de 0 a 1. Seria por exemplo, uma aplicação de regra de 3 para reduzir de um intervalo maior para menor
+
+Padronizar (Standard) : Converte numa distribuição Normal
++ Geralmente significa alterar os valores para que o desvio padrão da distribuição da média seja igual a um. Produz algo muito próximo a uma distribuição normal. A escala é frequentemente implícita.
+
+Normalizar (Normalize) : L1 e L2
++ Pode ser usado para significar uma das coisas acima (e mais!). Sugiro que você evite o termo normalizar, porque ele tem muitas definições e é propenso a criar confusão
+
+**Scales**
+
+**`MinMaxScaler`**
+
+<div style="text-align: center;">
+<img src="../../img/min-max-scale.png" />
+</div>
+
++ Preserva a forma da distribuição
++ Não reduz a importância dos outliers
++ Em geral a *range* fica entre \[0,1\]
+
+O MinMaxScaler é um bom escalador para começar, a menos que você 
+saiba que sua feature seja uma distribuição normal ou que os outliers tenham influência reduzida.
+
+**`RobustScaler`**
+
+<div style="text-align: center;">
+<img src="../../img/robust-scale.png" />
+</div>
+
+---
+layout: default
+title: Data Science PT-BR
+description: PreProcessing, Feature engering and Selection
+---
+
+## Índex
+
+## IMportância
+
+**Scalar**
+
+Nâo aplicar algorimos de ML em dados numéricos com valores muito alto. Quanto menor reduzir melhor, pois no processamento é feito diversas operaçôes que, em valores  muito grandes gasta muito mais tempo. ENtâo escale com um RObust ou MinMax valores numéricos
+
+**dtype**
+
+Para variaveis categoricas que estejam no formato 0/1 aplique o tipo 'unint8' que é um tipo bem pequeno que ocupa 1 byte (0 a 255). Se atenten a cada coluna para por no seu respectivo tipo de menor tamnho em memória, pois reduz a memória gasta e o torna mais ṕtimo
+
+**modelos**
+
+n_jobs=-1 e random_state=42
+
+## Links
+
++ [https://br.bitdegree.org/tutoriais/data-science/#Dicas_gerais_e_resumo](https://br.bitdegree.org/tutoriais/data-science/#Dicas_gerais_e_resumo)
+
+transforma o vetor de recurso subtraindo a mediana e depois dividindo pelo intervalo interquartil (valor de 75% - valor de 25%).
+
+Use RobustScaler se você deseja reduzir os efeitos de valores discrepantes, em relação ao MinMaxScaler.
+
+**`StandardScaler`**
+
+<div style="text-align: center;">
+<img src="../../img/standard-scale.png" />
+</div>
+
++ Para distribuições normais
++ O StandardScaler distorce as distâncias relativas entre os valores dos recursos, por isso geralmente é minha segunda opção nessa família de transformações.
+
+**`Normalizer`**
+
+<div style="text-align: center;">
+<img src="../../img/normalizer-scale.png" />
+</div>
+
++ Trabalha sobre as linhas, não as colunas
++ As normalizações L1 e L2 aplicam uma penalização as linhas
++ Transformam entre 1 e -1
+
+**Resumo**
+
+
++ Use MinMaxScaler como padrão se você estiver transformando um recurso. Não distorce.
++ Você pode usar o RobustScaler se tiver discrepâncias e quiser reduzir a influência delas. No entanto, é melhor remover os valores discrepantes.
++ Use o StandardScaler se precisar de uma distribuição relativamente normal.
++ Use o Normalizador com moderação - normaliza as linhas de amostra, não as colunas de recursos. Pode usar a normalização l2 ou l1.
+
+<div style="text-align: center;">
+<img src="../../img/compare-scales.png" />
+</div>
+
+<div style="text-align: center;">
+<img src="../../img/scales.png" />
+</div>
